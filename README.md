@@ -1,1 +1,1 @@
-# Traiement d'images satellitese&nbsp;: un grand bol d’R
+# Traiement d'images satellites&nbsp;: un grand bol d’R
