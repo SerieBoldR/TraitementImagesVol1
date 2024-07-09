@@ -1,0 +1,220 @@
+# Importation et manipulation de données spatiales {#sec-chap01}
+
+Dans le chapitre, nous abordons...
+
+::: bloc_package
+::: bloc_package-header
+::: bloc_package-icon
+:::
+
+**Liste des *packages* utilisés dans ce chapitre**
+:::
+
+::: bloc_package-body
+-   Pour importer et manipuler des fichiers géographiques :
+    -   `sf` pour importer et manipuler des données vectorielles.
+    -   `terra` pour importer et manipuler des données matricielles.
+-   Pour construire des cartes et des graphiques :
+    -   `tmap` est certainement le meilleur *package* pour la cartographie.
+    -   `ggplot2` pour construire des graphiques.
+:::
+:::
+
+## Bases de Quarto... {#sec-010}
+
+Voici comment faire une liste :
+
+-   **texte en gras**
+-   *texte en italique*
+    -   ***Gras et italique***
+-   R^2^ et NO~2~
+-   [Petites majuscules]{.smallcaps}
+-   Pour un lien Web, [Département de géomatique appliquée](https://www.usherbrooke.ca/geomatique/).
+
+Voici comment intégrer des équations LaTeX. La formule de la distance euclidienne (@eq-DistEuc).
+Pour écrire directement une équation dans le texte, il suffit de $E = mc^2$.
+
+$$
+ d_{ij} = 2R \cdot \text{ arcsin} \left( \sqrt{\text{sin}^2 \left( \frac{\delta _i - \delta _j}{2} \right) + \text{cos }\delta _i \cdot \text{cos }\delta _j \cdot \text{sin}^2 \left( \frac{\phi _i - \phi _j}{2} \right)} \right)
+$$ {#eq-DistLongLat}
+
+$$
+ d_{ij} = \sqrt{(x_i-x_j)^2+(y_i-y_j)^2}
+$$ {#eq-DistEuc}
+
+-   Intégrer une figure (image) et l'appeler dans le texte (@fig-downloaffromgit). À la @fig-downloaffromgit, ... Notez que la numérotation des figures, des tableaux, des équations est automatique.
+
+![Téléchargement de l'intégralité du livre](images/introduction/download_github.png){#fig-downloaffromgit width="40%" fig-align="center"}
+
+
+-   Les références sont au format BibTeX. Par exemple, vous pouvez les télécharger de Google Scholar et les intégrer à la fin du fichier references.bib. Voici comment intégrer des références [@mather2022computer; @richards2022remote]. Selon Ferdinand Boon et Guy Rochon [-@PrecisTeleVol1].
+
+
+Le code R ci-dessous permet de faire un tableau dans un chunk! Pour appeler le tableau (@tbl-TabMatricesSpatiales).
+
+```{r}
+#| label: tbl-TabMatricesSpatiales
+#| tbl-cap: Matrices de pondération spatiale selon la géométrie
+#| echo: false
+#| message: false
+#| warning: false
+
+df1 <- data.frame(
+  Matrice = c("Partage d'un nœud (*Queen*)", 
+              "Partage d'un segment (*Rook*)",
+              "Partage d'un nœud et ordre d'adjacence (*Queen*)", 
+               "Partage d'un segment et ordre d'adjacence (*Rook*)",
+              
+               "Connectivité selon la distance",
+               "Inverse de la distance",
+               "Inverse de la distance au carré",
+               "Nombre de plus proches voisins"),
+  Points  = c(" ", " ", " ", "", "X", "X", "X", "X"),
+  Lignes = c("X", "X", "X", "X", "X", "X", "X", "X"),
+  Polyg = c("X", "X",  "X", "X", "X", "X", "X", "X"),
+  Raster = c("X", "X", "X", "X", "X", "X", "X", "X")
+)
+
+knitr::kable(df1,
+       format.args = list(decimal.mark = ',', big.mark = " "),
+		   col.names = c("Matrice", "Points", "Lignes", "Polyg.", "*Raster*"),
+       align=c("l", "c", "c", "c", "c"))
+```
+
+
+## Importation d'images {#sec-011}
+
+### Manipulation d'une matrice {#sec-0111}
+
+### Formats de données {#sec-0112}
+
+Voici comment faire une liste
+
+-   Format RVB
+    -   jpeg
+    -   png
+-   GeoTiff
+-   COG
+-   NetCDF
+-   HDF5
+
+### Métadonnées des images {#sec-0113}
+
+### Données en géoscience {#sec-0114}
+
+Calibration, unités, données manquantes, données éparses.
+
+netcdf, xarray, GRIB.
+
+Données météos, exemple avec SWOT.
+
+## Importation de données vectorielles {#sec-012}
+
+### Importation d'un fichier *shapefile* {#sec-0121}
+
+### Importation d'une couche dans un *GeoPackage* {#sec-0122}
+
+### Importation d'une couche dans une *geodatabase* d'ESRI {#sec-0123}
+
+### Importation d'un fichier *shapefile* {#sec-0124}
+
+## Manipulation d'images {#sec-013}
+
+### Mosaïquage, masquage et découpage {#sec-0131}
+
+### Changement de projection cartographique {#sec-0132}
+
+### Recalage d'images et co-registration {#sec-0133}
+
+### Requêtes attributaires {#sec-0134}
+
+## Manipulation de données vectorielles {#sec-014}
+
+## Quiz de révision du chapitre {#sec-015}
+
+```{r}
+#| label: quizChapitre02
+#| echo: false 
+#| eval: true 
+#| message: false 
+#| warning: false 
+#| results: asis
+
+source("code_complementaire/QuizzFunctions.R")
+Chap01Quiz <- quizz("quiz/Chap01.yml", "Chap01")
+render_quizz(Chap01Quiz)
+```
+
+## Exercices de révision {#sec-016}
+
+::: bloc_exercice
+::: bloc_exercice-header
+::: bloc_exercice-icon
+:::
+
+**Exercice 1.** À compléter
+:::
+
+::: bloc_exercice-body
+```{r}
+#| echo: true 
+#| message: false 
+#| warning: false 
+#| eval: false
+library(sf)
+library(terra)
+# ...
+# à compléter
+```
+
+Correction à la [section @sec-08011].
+:::
+:::
+
+::: bloc_exercice
+::: bloc_exercice-header
+::: bloc_exercice-icon
+:::
+
+**Exercice 2.** À compléter
+:::
+
+::: bloc_exercice-body
+```{r}
+#| echo: true 
+#| message: false 
+#| warning: false 
+#| eval: false
+library(sf)
+library(terra)
+# ...
+# à compléter
+```
+
+Correction à la [section @sec-08012].
+:::
+:::
+
+::: bloc_exercice
+::: bloc_exercice-header
+::: bloc_exercice-icon
+:::
+
+**Exercice 3.** À compléter
+:::
+
+::: bloc_exercice-body
+```{r}
+#| echo: true 
+#| message: false 
+#| warning: false 
+#| eval: false
+library(sf)
+library(terra)
+# ...
+# à compléter
+```
+
+Correction à la [section @sec-08013].
+:::
+:::

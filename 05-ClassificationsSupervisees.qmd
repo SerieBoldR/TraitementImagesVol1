@@ -1,0 +1,120 @@
+# Classifications d'images supervisées {#sec-chap05}
+
+Dans le chapitre, nous abordons les classifications supervisées....
+
+::: bloc_package
+::: bloc_package-header
+::: bloc_package-icon
+:::
+
+**Liste des *packages* utilisés dans ce chapitre**
+:::
+
+::: bloc_package-body
+-   Pour importer et manipuler des fichiers géographiques :
+    -   `sf` pour importer et manipuler des données vectorielles.
+    -   `terra` pour importer et manipuler des données matricielles.
+-   Pour construire des cartes et des graphiques :
+    -   `tmap` est certainement le meilleur *package* pour la cartographie.
+    -   `ggplot2` pour construire des graphiques.
+:::
+:::
+
+## Classification d'images pixel par pixel {#sec-051}
+
+### Parallélépipède {#sec-0511}
+
+### Méthodes paramétriques {#sec-0512}
+
+### Méthodes non paramétriques {#sec-0513}
+
+### SVEM, réseaux de neurones, forêts aléatoires {#sec-0514}
+
+## Segmentation d’images {#sec-052}
+
+### Classification objet {#sec-0521}
+
+### Approches par arbre (BPT, etc.) {#sec-0522}
+
+
+## Quiz de révision du chapitre {#sec-053}
+
+```{r}
+#| label: quizChapitre05
+#| echo: false 
+#| eval: true 
+#| message: false 
+#| warning: false 
+#| results: asis
+
+source("code_complementaire/QuizzFunctions.R")
+Chap05Quiz <- quizz("quiz/Chap05.yml", "Chap05")
+render_quizz(Chap05Quiz)
+```
+
+## Exercices de révision {#sec-054}
+
+::: bloc_exercice
+::: bloc_exercice-header
+::: bloc_exercice-icon
+:::
+**Exercice 1.** À compléter
+:::
+::: bloc_exercice-body
+```{r}
+#| echo: true 
+#| message: false 
+#| warning: false 
+#| eval: false
+library(sf)
+library(terra)
+# ...
+# à compléter
+```
+Correction à la [section @sec-08061].
+:::
+:::
+
+::: bloc_exercice
+::: bloc_exercice-header
+::: bloc_exercice-icon
+:::
+**Exercice 2.** À compléter
+:::
+::: bloc_exercice-body
+```{r}
+#| echo: true 
+#| message: false 
+#| warning: false 
+#| eval: false
+library(sf)
+library(terra)
+# ...
+# à compléter
+```
+
+Correction à la [section @sec-08062].
+:::
+:::
+
+::: bloc_exercice
+::: bloc_exercice-header
+::: bloc_exercice-icon
+:::
+**Exercice 3.** À compléter
+:::
+::: bloc_exercice-body
+```{r}
+#| echo: true 
+#| message: false 
+#| warning: false 
+#| eval: false
+library(sf)
+library(terra)
+# ...
+# à compléter
+```
+
+Correction à la [section @sec-08063].
+:::
+:::

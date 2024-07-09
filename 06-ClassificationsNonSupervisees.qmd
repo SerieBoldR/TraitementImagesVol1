@@ -1,0 +1,118 @@
+# Classifications d'images non supervisées {#sec-chap06}
+
+Dans le chapitre, nous abordons les classifications non supervisées....
+
+::: bloc_package
+::: bloc_package-header
+::: bloc_package-icon
+:::
+
+**Liste des *packages* utilisés dans ce chapitre**
+:::
+
+::: bloc_package-body
+-   Pour importer et manipuler des fichiers géographiques :
+    -   `sf` pour importer et manipuler des données vectorielles.
+    -   `terra` pour importer et manipuler des données matricielles.
+-   Pour construire des cartes et des graphiques :
+    -   `tmap` est certainement le meilleur *package* pour la cartographie.
+    -   `ggplot2` pour construire des graphiques.
+:::
+:::
+
+
+## Classifications strictes {#sec-061}
+
+### K-means {#sec-0611}
+
+### K-mediodes {#sec-0612}
+
+### Isodata {#sec-0613}
+
+## Classifications floues {#sec-062}
+
+## C-Means {#sec-0621}
+
+### C-Means intégrant une dimension spatiale {#sec-0622}
+
+## Quiz de révision du chapitre {#sec-063}
+
+```{r}
+#| label: quizChapitre06
+#| echo: false 
+#| eval: true 
+#| message: false 
+#| warning: false 
+#| results: asis
+
+source("code_complementaire/QuizzFunctions.R")
+Chap06Quiz <- quizz("quiz/Chap06.yml", "Chap06")
+render_quizz(Chap06Quiz)
+```
+
+## Exercices de révision {#sec-064}
+
+::: bloc_exercice
+::: bloc_exercice-header
+::: bloc_exercice-icon
+:::
+**Exercice 1.** À compléter
+:::
+::: bloc_exercice-body
+```{r}
+#| echo: true 
+#| message: false 
+#| warning: false 
+#| eval: false
+library(sf)
+library(terra)
+# ...
+# à compléter
+```
+Correction à la [section @sec-08051].
+:::
+:::
+
+::: bloc_exercice
+::: bloc_exercice-header
+::: bloc_exercice-icon
+:::
+**Exercice 2.** À compléter
+:::
+::: bloc_exercice-body
+```{r}
+#| echo: true 
+#| message: false 
+#| warning: false 
+#| eval: false
+library(sf)
+library(terra)
+# ...
+# à compléter
+```
+
+Correction à la [section @sec-08052].
+:::
+:::
+
+::: bloc_exercice
+::: bloc_exercice-header
+::: bloc_exercice-icon
+:::
+**Exercice 3.** À compléter
+:::
+::: bloc_exercice-body
+```{r}
+#| echo: true 
+#| message: false 
+#| warning: false 
+#| eval: false
+library(sf)
+library(terra)
+# ...
+# à compléter
+```
+
+Correction à la [section @sec-08053].
+:::
+:::

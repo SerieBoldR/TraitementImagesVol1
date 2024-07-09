@@ -1,0 +1,108 @@
+# Transformations spectrales {#sec-chap03}
+
+Dans le chapitre, nous abordons les méthodes...
+
+::: bloc_package
+::: bloc_package-header
+::: bloc_package-icon
+:::
+
+**Liste des *packages* utilisés dans ce chapitre**
+:::
+
+::: bloc_package-body
+-   Pour importer et manipuler des fichiers géographiques :
+    -   `sf` pour importer et manipuler des données vectorielles.
+    -   `terra` pour importer et manipuler des données matricielles.
+-   Pour construire des cartes et des graphiques :
+    -   `tmap` est certainement le meilleur *package* pour la cartographie.
+    -   `ggplot2` pour construire des graphiques.
+:::
+:::
+
+
+## Indices spectraux {#sec-031}
+
+## Réduction de dimension {#sec-032}
+
+### Analyses en composantes principales {#sec-0311}
+
+```{r}
+#| label: quizChapitre06
+#| echo: false 
+#| eval: true 
+#| message: false 
+#| warning: false 
+#| results: asis
+
+source("code_complementaire/QuizzFunctions.R")
+Chap06Quiz <- quizz("quiz/Chap06.yml", "Chap06")
+render_quizz(Chap06Quiz)
+```
+
+## Exercices de révision {#sec-037}
+
+::: bloc_exercice
+::: bloc_exercice-header
+::: bloc_exercice-icon
+:::
+**Exercice 1.** À compléter
+:::
+::: bloc_exercice-body
+```{r}
+#| echo: true 
+#| message: false 
+#| warning: false 
+#| eval: false
+library(sf)
+library(terra)
+# ...
+# à compléter
+```
+Correction à la [section @sec-08031].
+:::
+:::
+
+::: bloc_exercice
+::: bloc_exercice-header
+::: bloc_exercice-icon
+:::
+**Exercice 2.** À compléter
+:::
+::: bloc_exercice-body
+```{r}
+#| echo: true 
+#| message: false 
+#| warning: false 
+#| eval: false
+library(sf)
+library(terra)
+# ...
+# à compléter
+```
+
+Correction à la [section @sec-08032].
+:::
+:::
+
+::: bloc_exercice
+::: bloc_exercice-header
+::: bloc_exercice-icon
+:::
+**Exercice 3.** À compléter
+:::
+::: bloc_exercice-body
+```{r}
+#| echo: true 
+#| message: false 
+#| warning: false 
+#| eval: false
+library(sf)
+library(terra)
+# ...
+# à compléter
+```
+
+Correction à la [section @sec-08033].
+:::
+:::

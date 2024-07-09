@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Traitement d’images satellites : un grand bol d’R - 1&nbsp; Importation et manipulation de données spatiales</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./02-RehaussementVisualisationImages.html" rel="next">
+<link href="./00-auteurs.html" rel="prev">
+<link href="./images/introduction/Couverture_16_01-01.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer"
+  }
+}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><link rel="stylesheet" href="css/quizlib.min.css">
+</head>
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-ImportationManipulationImages.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Importation et manipulation de données spatiales</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Recherche" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Traitement d’images satellites : un grand bol d’R</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/SerieBoldR/TraitementImagesVol1" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Recherche"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Préface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-auteurs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">À propos des auteurs</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Partie 1. Importation, manipulation et visualisation de données spatiales</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-ImportationManipulationImages.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Importation et manipulation de données spatiales</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-RehaussementVisualisationImages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Réhaussement et visualisation d’images</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Partie 2. Transformations des données satellitaires</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-TransformationSpectrales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Transformations spectrales</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-TransformationSpatiales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Transformations spatiales</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Partie 3. Classifications d'images</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-ClassificationsSupervisees.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Classifications d’images supervisées</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-ClassificationsNonSupervisees.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Classifications d’images non supervisées</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Partie 4. Données massives</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-PlateformesMegadonnees.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction aux plateformes de mégadonnées</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Partie 5. Exercices et bibliographie</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-Exercices.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Correction des exercices</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bibliographie</span></a>
+  </div>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table des matières</h2>
+   
+  <ul>
+<li><a href="#sec-010" id="toc-sec-010" class="nav-link active" data-scroll-target="#sec-010"><span class="header-section-number">1.1</span> Bases de Quarto…</a></li>
+  <li>
+<a href="#sec-011" id="toc-sec-011" class="nav-link" data-scroll-target="#sec-011"><span class="header-section-number">1.2</span> Importation d’images</a>
+  <ul class="collapse">
+<li><a href="#sec-0111" id="toc-sec-0111" class="nav-link" data-scroll-target="#sec-0111"><span class="header-section-number">1.2.1</span> Manipulation d’une matrice</a></li>
+  <li><a href="#sec-0112" id="toc-sec-0112" class="nav-link" data-scroll-target="#sec-0112"><span class="header-section-number">1.2.2</span> Formats de données</a></li>
+  <li><a href="#sec-0113" id="toc-sec-0113" class="nav-link" data-scroll-target="#sec-0113"><span class="header-section-number">1.2.3</span> Métadonnées des images</a></li>
+  <li><a href="#sec-0114" id="toc-sec-0114" class="nav-link" data-scroll-target="#sec-0114"><span class="header-section-number">1.2.4</span> Données en géoscience</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#sec-012" id="toc-sec-012" class="nav-link" data-scroll-target="#sec-012"><span class="header-section-number">1.3</span> Importation de données vectorielles</a>
+  <ul class="collapse">
+<li><a href="#sec-0121" id="toc-sec-0121" class="nav-link" data-scroll-target="#sec-0121"><span class="header-section-number">1.3.1</span> Importation d’un fichier <em>shapefile</em></a></li>
+  <li><a href="#sec-0122" id="toc-sec-0122" class="nav-link" data-scroll-target="#sec-0122"><span class="header-section-number">1.3.2</span> Importation d’une couche dans un <em>GeoPackage</em></a></li>
+  <li><a href="#sec-0123" id="toc-sec-0123" class="nav-link" data-scroll-target="#sec-0123"><span class="header-section-number">1.3.3</span> Importation d’une couche dans une <em>geodatabase</em> d’ESRI</a></li>
+  <li><a href="#sec-0124" id="toc-sec-0124" class="nav-link" data-scroll-target="#sec-0124"><span class="header-section-number">1.3.4</span> Importation d’un fichier <em>shapefile</em></a></li>
+  </ul>
+</li>
+  <li>
+<a href="#sec-013" id="toc-sec-013" class="nav-link" data-scroll-target="#sec-013"><span class="header-section-number">1.4</span> Manipulation d’images</a>
+  <ul class="collapse">
+<li><a href="#sec-0131" id="toc-sec-0131" class="nav-link" data-scroll-target="#sec-0131"><span class="header-section-number">1.4.1</span> Mosaïquage, masquage et découpage</a></li>
+  <li><a href="#sec-0132" id="toc-sec-0132" class="nav-link" data-scroll-target="#sec-0132"><span class="header-section-number">1.4.2</span> Changement de projection cartographique</a></li>
+  <li><a href="#sec-0133" id="toc-sec-0133" class="nav-link" data-scroll-target="#sec-0133"><span class="header-section-number">1.4.3</span> Recalage d’images et co-registration</a></li>
+  <li><a href="#sec-0134" id="toc-sec-0134" class="nav-link" data-scroll-target="#sec-0134"><span class="header-section-number">1.4.4</span> Requêtes attributaires</a></li>
+  </ul>
+</li>
+  <li><a href="#sec-014" id="toc-sec-014" class="nav-link" data-scroll-target="#sec-014"><span class="header-section-number">1.5</span> Manipulation de données vectorielles</a></li>
+  <li><a href="#sec-015" id="toc-sec-015" class="nav-link" data-scroll-target="#sec-015"><span class="header-section-number">1.6</span> Quiz de révision du chapitre</a></li>
+  <li><a href="#sec-016" id="toc-sec-016" class="nav-link" data-scroll-target="#sec-016"><span class="header-section-number">1.7</span> Exercices de révision</a></li>
+  </ul><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/SerieBoldR/TraitementImagesVol1/issues/new" class="toc-action">Signaler un problème ou<br>formuler une suggestion</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title"><span id="sec-chap01" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Importation et manipulation de données spatiales</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header><p>Dans le chapitre, nous abordons…</p>
+<div class="bloc_package">
+<div class="bloc_package-header">
+<div class="bloc_package-icon">
+
+</div>
+<p><strong>Liste des <em>packages</em> utilisés dans ce chapitre</strong></p>
+</div>
+<div class="bloc_package-body">
+<ul>
+<li>Pour importer et manipuler des fichiers géographiques&nbsp;:
+<ul>
+<li>
+<code>sf</code> pour importer et manipuler des données vectorielles.</li>
+<li>
+<code>terra</code> pour importer et manipuler des données matricielles.</li>
+</ul>
+</li>
+<li>Pour construire des cartes et des graphiques&nbsp;:
+<ul>
+<li>
+<code>tmap</code> est certainement le meilleur <em>package</em> pour la cartographie.</li>
+<li>
+<code>ggplot2</code> pour construire des graphiques.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<section id="sec-010" class="level2" data-number="1.1"><h2 data-number="1.1" class="anchored" data-anchor-id="sec-010">
+<span class="header-section-number">1.1</span> Bases de Quarto…</h2>
+<p>Voici comment faire une liste&nbsp;:</p>
+<ul>
+<li><strong>texte en gras</strong></li>
+<li>
+<em>texte en italique</em>
+<ul>
+<li><strong><em>Gras et italique</em></strong></li>
+</ul>
+</li>
+<li>R<sup>2</sup> et NO<sub>2</sub>
+</li>
+<li><span class="smallcaps">Petites majuscules</span></li>
+<li>Pour un lien Web, <a href="https://www.usherbrooke.ca/geomatique/">Département de géomatique appliquée</a>.</li>
+</ul>
+<p>Voici comment intégrer des équations LaTeX. La formule de la distance euclidienne (<a href="#eq-DistEuc">équation&nbsp;<span>1.2</span></a>). Pour écrire directement une équation dans le texte, il suffit de <span class="math inline">\(E = mc^2\)</span>.</p>
+<p><span id="eq-DistLongLat"><span class="math display">\[
+d_{ij} = 2R \cdot \text{ arcsin} \left( \sqrt{\text{sin}^2 \left( \frac{\delta _i - \delta _j}{2} \right) + \text{cos }\delta _i \cdot \text{cos }\delta _j \cdot \text{sin}^2 \left( \frac{\phi _i - \phi _j}{2} \right)} \right)
+\tag{1.1}\]</span></span></p>
+<p><span id="eq-DistEuc"><span class="math display">\[
+d_{ij} = \sqrt{(x_i-x_j)^2+(y_i-y_j)^2}
+\tag{1.2}\]</span></span></p>
+<ul>
+<li>Intégrer une figure (image) et l’appeler dans le texte (<a href="#fig-downloaffromgit">figure&nbsp;<span>1.1</span></a>). À la <a href="#fig-downloaffromgit">figure&nbsp;<span>1.1</span></a>, … Notez que la numérotation des figures, des tableaux, des équations est automatique.</li>
+</ul>
+<div id="fig-downloaffromgit" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="images/introduction/download_github.png" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;1.1: Téléchargement de l’intégralité du livre</figcaption></figure>
+</div>
+<ul>
+<li>Les références sont au format BibTeX. Par exemple, vous pouvez les télécharger de Google Scholar et les intégrer à la fin du fichier references.bib. Voici comment intégrer des références <span class="citation" data-cites="mather2022computer richards2022remote">(<a href="references.html#ref-mather2022computer" role="doc-biblioref">Mather et Koch 2022</a>; <a href="references.html#ref-richards2022remote" role="doc-biblioref">Richards, Richards et al. 2022</a>)</span>. Selon Ferdinand Boon et Guy Rochon <span class="citation" data-cites="PrecisTeleVol1">(<a href="references.html#ref-PrecisTeleVol1" role="doc-biblioref">1992</a>)</span>.</li>
+</ul>
+<p>Le code R ci-dessous permet de faire un tableau dans un chunk! Pour appeler le tableau (<a href="#tbl-TabMatricesSpatiales">tableau&nbsp;<span>1.1</span></a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-TabMatricesSpatiales" class="anchored">
+<table class="table table-sm table-striped small">
+<caption>Tableau&nbsp;1.1: Matrices de pondération spatiale selon la géométrie</caption>
+<colgroup>
+<col style="width: 60%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 11%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">Matrice</th>
+<th style="text-align: center;">Points</th>
+<th style="text-align: center;">Lignes</th>
+<th style="text-align: center;">Polyg.</th>
+<th style="text-align: center;"><em>Raster</em></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Partage d’un nœud (<em>Queen</em>)</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Partage d’un segment (<em>Rook</em>)</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Partage d’un nœud et ordre d’adjacence (<em>Queen</em>)</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Partage d’un segment et ordre d’adjacence (<em>Rook</em>)</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Connectivité selon la distance</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Inverse de la distance</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inverse de la distance au carré</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nombre de plus proches voisins</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section><section id="sec-011" class="level2" data-number="1.2"><h2 data-number="1.2" class="anchored" data-anchor-id="sec-011">
+<span class="header-section-number">1.2</span> Importation d’images</h2>
+<section id="sec-0111" class="level3" data-number="1.2.1"><h3 data-number="1.2.1" class="anchored" data-anchor-id="sec-0111">
+<span class="header-section-number">1.2.1</span> Manipulation d’une matrice</h3>
+</section><section id="sec-0112" class="level3" data-number="1.2.2"><h3 data-number="1.2.2" class="anchored" data-anchor-id="sec-0112">
+<span class="header-section-number">1.2.2</span> Formats de données</h3>
+<p>Voici comment faire une liste</p>
+<ul>
+<li>Format RVB
+<ul>
+<li>jpeg</li>
+<li>png</li>
+</ul>
+</li>
+<li>GeoTiff</li>
+<li>COG</li>
+<li>NetCDF</li>
+<li>HDF5</li>
+</ul></section><section id="sec-0113" class="level3" data-number="1.2.3"><h3 data-number="1.2.3" class="anchored" data-anchor-id="sec-0113">
+<span class="header-section-number">1.2.3</span> Métadonnées des images</h3>
+</section><section id="sec-0114" class="level3" data-number="1.2.4"><h3 data-number="1.2.4" class="anchored" data-anchor-id="sec-0114">
+<span class="header-section-number">1.2.4</span> Données en géoscience</h3>
+<p>Calibration, unités, données manquantes, données éparses.</p>
+<p>netcdf, xarray, GRIB.</p>
+<p>Données météos, exemple avec SWOT.</p>
+</section></section><section id="sec-012" class="level2" data-number="1.3"><h2 data-number="1.3" class="anchored" data-anchor-id="sec-012">
+<span class="header-section-number">1.3</span> Importation de données vectorielles</h2>
+<section id="sec-0121" class="level3" data-number="1.3.1"><h3 data-number="1.3.1" class="anchored" data-anchor-id="sec-0121">
+<span class="header-section-number">1.3.1</span> Importation d’un fichier <em>shapefile</em>
+</h3>
+</section><section id="sec-0122" class="level3" data-number="1.3.2"><h3 data-number="1.3.2" class="anchored" data-anchor-id="sec-0122">
+<span class="header-section-number">1.3.2</span> Importation d’une couche dans un <em>GeoPackage</em>
+</h3>
+</section><section id="sec-0123" class="level3" data-number="1.3.3"><h3 data-number="1.3.3" class="anchored" data-anchor-id="sec-0123">
+<span class="header-section-number">1.3.3</span> Importation d’une couche dans une <em>geodatabase</em> d’ESRI</h3>
+</section><section id="sec-0124" class="level3" data-number="1.3.4"><h3 data-number="1.3.4" class="anchored" data-anchor-id="sec-0124">
+<span class="header-section-number">1.3.4</span> Importation d’un fichier <em>shapefile</em>
+</h3>
+</section></section><section id="sec-013" class="level2" data-number="1.4"><h2 data-number="1.4" class="anchored" data-anchor-id="sec-013">
+<span class="header-section-number">1.4</span> Manipulation d’images</h2>
+<section id="sec-0131" class="level3" data-number="1.4.1"><h3 data-number="1.4.1" class="anchored" data-anchor-id="sec-0131">
+<span class="header-section-number">1.4.1</span> Mosaïquage, masquage et découpage</h3>
+</section><section id="sec-0132" class="level3" data-number="1.4.2"><h3 data-number="1.4.2" class="anchored" data-anchor-id="sec-0132">
+<span class="header-section-number">1.4.2</span> Changement de projection cartographique</h3>
+</section><section id="sec-0133" class="level3" data-number="1.4.3"><h3 data-number="1.4.3" class="anchored" data-anchor-id="sec-0133">
+<span class="header-section-number">1.4.3</span> Recalage d’images et co-registration</h3>
+</section><section id="sec-0134" class="level3" data-number="1.4.4"><h3 data-number="1.4.4" class="anchored" data-anchor-id="sec-0134">
+<span class="header-section-number">1.4.4</span> Requêtes attributaires</h3>
+</section></section><section id="sec-014" class="level2" data-number="1.5"><h2 data-number="1.5" class="anchored" data-anchor-id="sec-014">
+<span class="header-section-number">1.5</span> Manipulation de données vectorielles</h2>
+</section><section id="sec-015" class="level2" data-number="1.6"><h2 data-number="1.6" class="anchored" data-anchor-id="sec-015">
+<span class="header-section-number">1.6</span> Quiz de révision du chapitre</h2>
+<div id="Chap01" class="card">
+<link type="text/javascript" src="libs/quizlib.1.0.1.min.js">
+<script>var Quiz=function(a,b){this.Classes=Object.freeze({QUESTION:"quizlib-question",QUESTION_TITLE:"quizlib-question-title",QUESTION_ANSWERS:"quizlib-question-answers",QUESTION_WARNING:"quizlib-question-warning",CORRECT:"quizlib-correct",INCORRECT:"quizlib-incorrect",TEMP:"quizlib-temp"}),this.unansweredQuestionText="Question sans réponse !",this.container=document.getElementById(a),this.questions=[],this.result=new QuizResult,this.answers=b;for(var c=0;c<this.container.children.length;c++)this.container.children[c].classList.contains(Quiz.Classes.QUESTION)&&this.questions.push(this.container.children[c]);if(this.answers.length!=this.questions.length)throw new Error("Number of answers does not match number of questions!")};Quiz.Classes=Object.freeze({QUESTION:"quizlib-question",QUESTION_TITLE:"quizlib-question-title",QUESTION_ANSWERS:"quizlib-question-answers",QUESTION_WARNING:"quizlib-question-warning",CORRECT:"quizlib-correct",INCORRECT:"quizlib-incorrect",TEMP:"quizlib-temp"}),Quiz.prototype.checkAnswers=function(a){void 0===a&&(a=!0);for(var b=[],c=[],d=0;d<this.questions.length;d++){var e=this.questions[d],f=this.answers[d],g=[];this.clearHighlights(e);for(var h,i=e.getElementsByClassName(Quiz.Classes.QUESTION_ANSWERS)[0].getElementsByTagName("input"),j=0;j<i.length;j++)h=i[j],"checkbox"===h.type||"radio"===h.type?h.checked&&g.push(h.value):""!==h.value&&g.push(h.value);1!=g.length||Array.isArray(f)?0===g.length&&b.push(e):g=g[0],c.push(Utils.compare(g,f))}if(0===b.length||!a)return this.result.setResults(c),!0;for(d=0;d<b.length;d++){var k=document.createElement("span");k.appendChild(document.createTextNode(this.unansweredQuestionText)),k.className=Quiz.Classes.QUESTION_WARNING,b[d].getElementsByClassName(Quiz.Classes.QUESTION_TITLE)[0].appendChild(k)}return!1},Quiz.prototype.clearHighlights=function(a){for(var b=a.getElementsByClassName(Quiz.Classes.QUESTION_WARNING);b.length>0;)b[0].parentNode.removeChild(b[0]);var c,d=[a.getElementsByClassName(Quiz.Classes.CORRECT),a.getElementsByClassName(this.Classes.INCORRECT)];for(i=0;i<d.length;i++)for(;d[i].length>0;)c=d[i][0],c.classList.remove(Quiz.Classes.CORRECT),c.classList.remove(Quiz.Classes.INCORRECT);for(var e=a.getElementsByClassName(Quiz.Classes.TEMP);e.length>0;)e[0].parentNode.removeChild(e[0])},Quiz.prototype.highlightResults=function(a){for(var b,c=0;c<this.questions.length;c++)b=this.questions[c],b.getElementsByClassName(Quiz.Classes.QUESTION_TITLE)[0].classList.add(this.result.results[c]?Quiz.Classes.CORRECT:Quiz.Classes.INCORRECT),void 0!==a&&a(this,b,c,this.result.results[c])};var QuizResult=function(){this.results=[],this.totalQuestions=0,this.score=0,this.scorePercent=0,this.scorePercentFormatted=0};QuizResult.prototype.setResults=function(a){this.results=a,this.totalQuestions=this.results.length,this.score=0;for(var b=0;b<this.results.length;b++)this.results[b]&&this.score++;this.scorePercent=this.score/this.totalQuestions,this.scorePercentFormatted=Math.floor(100*this.scorePercent)};var Utils=function(){};Utils.compare=function(a,b){if(a.length!=b.length)return!1;if(Array.isArray(a)&&Array.isArray(b)){for(var c=0;c<a.length;c++)if(a[c]!==b[c])return!1;return!0}return a===b};
+
+function showResults(quiz) {
+    // Check answers and continue if all questions have been answered
+    if (quiz.checkAnswers()) {
+        var quizScorePercent = quiz.result.scorePercentFormatted; // The unformatted percentage is a decimal in range 0 - 1
+        var quizResultElement = document.getElementById('quiz-result');
+        quizResultElement.style.display = 'block';
+        document.getElementById('quiz-percent').innerHTML = quizScorePercent.toString();
+
+        // Change background colour of results div according to score percent
+        if (quizScorePercent > 75) quizResultElement.style.backgroundColor = '#4caf50';
+        else if (quizScorePercent > 50) quizResultElement.style.backgroundColor = '#ffc107';
+        else if (quizScorePercent > 25) quizResultElement.style.backgroundColor = '#ff9800';
+        else if (quizScorePercent > 0) quizResultElement.style.backgroundColor = '#f44336';
+
+        // Highlight questions according to whether they were correctly answered. The callback allows us to highlight/show the correct answer
+        quiz.highlightResults(handleAnswers);
+    }
+}
+
+/** Callback for Quiz.highlightResults. Highlights the correct answers of incorrectly answered questions
+ * Parameters are: the quiz object, the question element, question number, correctly answered flag
+ */
+function handleAnswers(quiz, question, no, correct) {
+    if (!correct) {
+        var answers = question.getElementsByTagName('input');
+        for (var i = 0; i < answers.length; i++) {
+            if (answers[i].type === 'checkbox' || answers[i].type === 'radio'){
+                // If the current input element is part of the correct answer, highlight it
+                if (quiz.answers[no].indexOf(answers[i].value) > -1) {
+                    answers[i].parentNode.classList.add(Quiz.Classes.CORRECT);
+                }
+            } else {
+                // If the input is anything other than a checkbox or radio button, show the correct answer next to the element
+                var correctAnswer = document.createElement('span');
+                correctAnswer.classList.add(Quiz.Classes.CORRECT);
+                correctAnswer.classList.add(Quiz.Classes.TEMP); // quiz.checkAnswers will automatically remove elements with the temp class
+                correctAnswer.innerHTML = quiz.answers[no];
+                correctAnswer.style.marginLeft = '10px';
+                answers[i].parentNode.insertBefore(correctAnswer, answers[i].nextSibling);
+            }
+        }
+    }
+}
+
+  var quizz_Chap01;
+  window.onload = function() {
+    quizz_Chap01 = new Quiz('Chap01', [['1', '2', '3'],'2','2','2','1',['1', '2', '3', '4'],'2','2']);
+  };</script><link rel="stylesheet" type="text/css" src="css/quizlib.min.css">
+<div class="card quizlib-question">
+<div class="quizlib-question-title">
+La classe sf est composée de trois éléments :
+</div>
+<div>
+Relisez au besoin la <a href="#sec-011">section&nbsp;<span>1.2</span></a>.
+</div>
+<div class="quizlib-question-answers">
+
+<table class="table table-sm table-striped small">
+<tbody><tr>
+<td>
+<label>simple feature geometry (sfg) : géométrie d’une observation</label>
+</td>
+<td>
+<input type="checkbox" name="q1" value="1">
+</td>
+</tr>
+<tr>
+<td>
+<label>simple feature column (sfc) : liste toutes les géométries d’une couche</label>
+</td>
+<td>
+<input type="checkbox" name="q1" value="2">
+</td>
+</tr>
+<tr>
+<td>
+<label>data.fame : données attributaires</label>
+</td>
+<td>
+<input type="checkbox" name="q1" value="3">
+</td>
+</tr>
+<tr>
+<td>
+<label>raster : données images</label>
+</td>
+<td>
+<input type="checkbox" name="q1" value="4">
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="card quizlib-question">
+<div class="quizlib-question-title">
+Laquelle de ces fonctions permet de changer la projection cartographique d’une couche géographique?
+</div>
+<div>
+Relisez au besoin le début de la <a href="#sec-012">section&nbsp;<span>1.3</span></a>.
+</div>
+<div class="quizlib-question-answers">
+
+<table class="table table-sm table-striped small">
+<tbody><tr>
+<td>
+<label>st_crs(x)</label>
+</td>
+<td>
+<input type="radio" name="q2" value="1">
+</td>
+</tr>
+<tr>
+<td>
+<label>st_transform(x, crs)</label>
+</td>
+<td>
+<input type="radio" name="q2" value="2">
+</td>
+</tr>
+<tr>
+<td>
+<label>st_is_longlat(x)</label>
+</td>
+<td>
+<input type="radio" name="q2" value="3">
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="card quizlib-question">
+<div class="quizlib-question-title">
+Laquelle de ces fonctions n’est pas une fonction géométrique sur une couche?
+</div>
+<div>
+Relisez au besoin la <a href="#sec-012">section&nbsp;<span>1.3</span></a>.
+</div>
+<div class="quizlib-question-answers">
+
+<table class="table table-sm table-striped small">
+<tbody><tr>
+<td>
+<label>st_bbox(x)</label>
+</td>
+<td>
+<input type="radio" name="q3" value="1">
+</td>
+</tr>
+<tr>
+<td>
+<label>st_union(x)</label>
+</td>
+<td>
+<input type="radio" name="q3" value="2">
+</td>
+</tr>
+<tr>
+<td>
+<label>st_point_on_surface(x)</label>
+</td>
+<td>
+<input type="radio" name="q3" value="3">
+</td>
+</tr>
+<tr>
+<td>
+<label>st_crop(x, y, xmin, ymin, xmax, ymax)</label>
+</td>
+<td>
+<input type="radio" name="q3" value="4">
+</td>
+</tr>
+<tr>
+<td>
+<label>st_centroid(x)</label>
+</td>
+<td>
+<input type="radio" name="q3" value="5">
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="card quizlib-question">
+<div class="quizlib-question-title">
+Comparativement à l’algorithme de Douglas et Peucker, que permet l’algorithme de Visvalingam lors de la simplification des contours?
+</div>
+<div>
+Relisez au besoin la <a href="#sec-0122">section&nbsp;<span>1.3.2</span></a>.
+</div>
+<div class="quizlib-question-answers">
+
+<table class="table table-sm table-striped small">
+<tbody><tr>
+<td>
+<label>Il est plus rapide.</label>
+</td>
+<td>
+<input type="radio" name="q4" value="1">
+</td>
+</tr>
+<tr>
+<td>
+<label>Il permet de conserver les frontières.</label>
+</td>
+<td>
+<input type="radio" name="q4" value="2">
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="card quizlib-question">
+<div class="quizlib-question-title">
+Tous les points sont compris dans leur enveloppe convexe.
+</div>
+<div>
+Relisez au besoin la <a href="#sec-0122">section&nbsp;<span>1.3.2</span></a>.
+</div>
+<div class="quizlib-question-answers">
+
+<table class="table table-sm table-striped small">
+<tbody><tr>
+<td>
+<label>Vrai</label>
+</td>
+<td>
+<input type="radio" name="q5" value="1">
+</td>
+</tr>
+<tr>
+<td>
+<label>Faux</label>
+</td>
+<td>
+<input type="radio" name="q5" value="2">
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="card quizlib-question">
+<div class="quizlib-question-title">
+Quelles sont les quatre fonctions de mesures géométriques et de récupération des coordonnées géographiques?
+</div>
+<div>
+Relisez au besoin la <a href="#sec-012">section&nbsp;<span>1.3</span></a>.
+</div>
+<div class="quizlib-question-answers">
+
+<table class="table table-sm table-striped small">
+<tbody><tr>
+<td>
+<label>st_area(x)</label>
+</td>
+<td>
+<input type="checkbox" name="q6" value="1">
+</td>
+</tr>
+<tr>
+<td>
+<label>st_length(x)</label>
+</td>
+<td>
+<input type="checkbox" name="q6" value="2">
+</td>
+</tr>
+<tr>
+<td>
+<label>st_distance(x,y)</label>
+</td>
+<td>
+<input type="checkbox" name="q6" value="3">
+</td>
+</tr>
+<tr>
+<td>
+<label>st_coordinates(x)</label>
+</td>
+<td>
+<input type="checkbox" name="q6" value="4">
+</td>
+</tr>
+<tr>
+<td>
+<label>st_union(x)</label>
+</td>
+<td>
+<input type="checkbox" name="q6" value="5">
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="card quizlib-question">
+<div class="quizlib-question-title">
+Quelle est la différence entre les fonctions st_intersects(x, y) et st_intersection(x, y)?
+</div>
+<div>
+Relisez le deuxième encadré à la <span class="quarto-unresolved-ref">?sec-0126</span>.
+</div>
+<div class="quizlib-question-answers">
+
+<table class="table table-sm table-striped small">
+<tbody><tr>
+<td>
+<label>Elles génèrent le même résultat.</label>
+</td>
+<td>
+<input type="radio" name="q7" value="1">
+</td>
+</tr>
+<tr>
+<td>
+<label>La première est une requête spatiale, la seconde renvoie l’intersection entre deux couches.</label>
+</td>
+<td>
+<input type="radio" name="q7" value="2">
+</td>
+</tr>
+<tr>
+<td>
+<label>La première renvoie l’intersection entre deux couches, la seconde est une requête spatiale.</label>
+</td>
+<td>
+<input type="radio" name="q7" value="3">
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="card quizlib-question">
+<div class="quizlib-question-title">
+Laquelle des fonctions sf permet d’exporter des données vectorielles?
+</div>
+<div>
+Relisez au besoin la <a href="#sec-014">section&nbsp;<span>1.5</span></a>.
+</div>
+<div class="quizlib-question-answers">
+
+<table class="table table-sm table-striped small">
+<tbody><tr>
+<td>
+<label>st_read()</label>
+</td>
+<td>
+<input type="radio" name="q8" value="1">
+</td>
+</tr>
+<tr>
+<td>
+<label>st_write()</label>
+</td>
+<td>
+<input type="radio" name="q8" value="2">
+</td>
+</tr>
+<tr>
+<td>
+<label>writeRaster()</label>
+</td>
+<td>
+<input type="radio" name="q8" value="3">
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<button type="button" onclick="showResults(quizz_Chap01);" id="buttonID">
+Vérifier votre résultat
+</button>
+<div id="quiz-result" class="card">
+<p><span id="quiz-percent"></span></p>
+</div>
+</div>
+</section><section id="sec-016" class="level2" data-number="1.7"><h2 data-number="1.7" class="anchored" data-anchor-id="sec-016">
+<span class="header-section-number">1.7</span> Exercices de révision</h2>
+<div class="bloc_exercice">
+<div class="bloc_exercice-header">
+<div class="bloc_exercice-icon">
+
+</div>
+<p><strong>Exercice 1.</strong> À compléter</p>
+</div>
+<div class="bloc_exercice-body">
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/">terra</a></span><span class="op">)</span></span>
+<span><span class="co"># ...</span></span>
+<span><span class="co"># à compléter</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Correction à la <a href="08-Exercices.html#sec-08011">section&nbsp;<span>8.1.1</span></a>.</p>
+</div>
+</div>
+<div class="bloc_exercice">
+<div class="bloc_exercice-header">
+<div class="bloc_exercice-icon">
+
+</div>
+<p><strong>Exercice 2.</strong> À compléter</p>
+</div>
+<div class="bloc_exercice-body">
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/">terra</a></span><span class="op">)</span></span>
+<span><span class="co"># ...</span></span>
+<span><span class="co"># à compléter</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Correction à la <a href="08-Exercices.html#sec-08012">section&nbsp;<span>8.1.2</span></a>.</p>
+</div>
+</div>
+<div class="bloc_exercice">
+<div class="bloc_exercice-header">
+<div class="bloc_exercice-icon">
+
+</div>
+<p><strong>Exercice 3.</strong> À compléter</p>
+</div>
+<div class="bloc_exercice-body">
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/">terra</a></span><span class="op">)</span></span>
+<span><span class="co"># ...</span></span>
+<span><span class="co"># à compléter</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Correction à la <a href="08-Exercices.html#sec-08013">section&nbsp;<span>8.1.3</span></a>.</p>
+</div>
+</div>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-PrecisTeleVol1" class="csl-entry" role="listitem">
+Bonn, Ferdinand et Guy Rochon. 1992. <em>Précis de télédétection. Volume 1 : principes et méthodes</em>. Presses de l’université du Québec; Agence universitaire de la Francophonie.
+</div>
+<div id="ref-mather2022computer" class="csl-entry" role="listitem">
+Mather, Paul M et Magaly Koch. 2022. <em>Computer processing of remotely-sensed images</em>. John Wiley &amp; Sons.
+</div>
+<div id="ref-richards2022remote" class="csl-entry" role="listitem">
+Richards, John A, John A Richards et al. 2022. <em>Remote sensing digital image analysis</em>. Vol. 5. Springer.
+</div>
+</div>
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copié");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copié");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./00-auteurs.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">À propos des auteurs</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./02-RehaussementVisualisationImages.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Réhaussement et visualisation d’images</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">Traitement d’images satellites : un grand bol d’R.</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">Ce livre a été réalisé avec <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
+
+
+</body></html>

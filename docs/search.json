@@ -1,0 +1,373 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Traitement d’images satellites : un grand bol d’R",
+    "section": "",
+    "text": "Préface"
+  },
+  {
+    "objectID": "index.html#sect001",
+    "href": "index.html#sect001",
+    "title": "Traitement d’images satellites : un grand bol d’R",
+    "section": "Un manuel sous la forme d’une ressource éducative libre",
+    "text": "Un manuel sous la forme d’une ressource éducative libre\nPourquoi un manuel sous licence libre?\nLes logiciels libres sont aujourd’hui très répandus. Comparativement aux logiciels propriétaires, l’accès au code source permet à quiconque de l’utiliser, de le modifier, de le dupliquer et de le partager. Le logiciel R, dans lequel sont mises en œuvre les méthodes de traitement d’images satellites décrites dans ce livre, est d’ailleurs à la fois un langage de programmation et un logiciel libre (sous la licence publique générale GNU GPL2). Par analogie aux logiciels libres, il existe aussi des ressources éducatives libres (REL) « dont la licence accorde les permissions désignées par les 5R (Retenir — Réutiliser — Réviser — Remixer — Redistribuer) et donc permet nécessairement la modification » (fabriqueREL). La licence de ce livre, CC BY-SA (figure 1), permet donc de :\n\nRetenir, c’est-à-dire télécharger et imprimer gratuitement le livre. Notez qu’il aurait été plutôt surprenant d’écrire un livre payant sur un logiciel libre et donc gratuit. Aussi, nous aurions été très embarrassés que des personnes étudiantes avec des ressources financières limitées doivent payer pour avoir accès au livre, sans pour autant savoir préalablement si le contenu est réellement adapté à leurs besoins.\nRéutiliser, c’est-à-dire utiliser la totalité ou une section du livre sans limitation et sans compensation financière. Cela permet ainsi à d’autres personnes enseignantes de l’utiliser dans le cadre d’activités pédagogiques.\nRéviser, c’est-à-dire modifier, adapter et traduire le contenu en fonction d’un besoin pédagogique précis puisqu’aucun manuel n’est parfait, tant s’en faut! Le livre a d’ailleurs été écrit intégralement dans R avec Quatro. Quiconque peut ainsi télécharger gratuitement le code source du livre sur github et le modifier à sa guise (voir l’encadré intitulé Suggestions d’adaptation du manuel).\nRemixer, c’est-à-dire « combiner la ressource avec d’autres ressources dont la licence le permet aussi pour créer une nouvelle ressource intégrée » (fabriqueREL).\nRedistribuer, c’est-à-dire distribuer, en totalité ou en partie le manuel ou une version révisée sur d’autres canaux que le site Web du livre (par exemple, sur le site Moodle de votre université ou en faire une version imprimée).\n\nLa licence de ce livre, CC BY-SA (figure 1), oblige donc à :\n\nAttribuer la paternité de l’auteur dans vos versions dérivées, ainsi qu’une mention concernant les grandes modifications apportées, en utilisant la formulation suivante :\n\nApparicio Philippe, Yacine Bouroubi, Samuel Foucher et Mickaël Foucher (2024). Traitement d’images satellites : un grand bol d’R. Université de Sherbrooke, Département de géomatique appliquée. fabriqueREL. Licence CC BY-SA.\n\nUtiliser la même licence ou une licence similaire à toutes versions dérivées.\n\n\n\nFigure 1: Licence Creative Commons du livre\n\n\n\n\n\n\nSuggestions d’adaptation du manuel\n\n\nPour chaque méthode d’analyse spatiale abordée dans le livre, une description détaillée et une mise en œuvre dans R sont disponibles. Par conséquent, plusieurs adaptations du manuel sont possibles :\n\nConserver uniquement les chapitres sur les méthodes ciblées dans votre cours.\nEn faire une version imprimée et la distribuer aux personnes étudiantes.\nModifier la description d’une ou de plusieurs méthodes en effectuant les mises à jour directement dans les chapitres.\nInsérer ses propres jeux de données dans les sections intitulées Mise en œuvre dans R.\nModifier les tableaux et figures.\nAjouter une série d’exercices.\nModifier les quiz de révision.\nRédiger un nouveau chapitre.\nModifier des syntaxes R. Plusieurs packages R peuvent être utilisés pour mettre en œuvre telle ou telle méthode. Ces derniers évoluent aussi très vite et de nouveaux packages sont proposés fréquemment! Par conséquent, il peut être judicieux de modifier une syntaxe R du livre en fonction de ses habitudes de programmation dans R (utilisation d’autres packages que ceux utilisés dans le manuel par exemple) ou de bien mettre à jour une syntaxe à la suite de la parution d’un nouveau package plus performant ou intéressant.\nToute autre adaptation qui permet de répondre au mieux à un besoin pédagogique."
+  },
+  {
+    "objectID": "index.html#sect002",
+    "href": "index.html#sect002",
+    "title": "Traitement d’images satellites : un grand bol d’R",
+    "section": "Comment lire ce manuel?",
+    "text": "Comment lire ce manuel?\nLe livre comprend plusieurs types de blocs de texte qui en facilitent la lecture.\n\n\n\n\n\nBloc packages\n\n\nHabituellement localisé au début d’un chapitre, il comprend la liste des packages R utilisés pour un chapitre.\n\n\n\n\n\n\n\nBloc objectif\n\n\nIl comprend une description des objectifs d’un chapitre ou d’une section.\n\n\n\n\n\n\n\nBloc notes\n\n\nIl comprend une information secondaire sur une notion, une idée abordée dans une section.\n\n\n\n\n\n\n\nBloc pour aller plus loin\n\n\nIl comprend des références ou des extensions d’une méthode abordée dans une section.\n\n\n\n\n\n\n\nBloc astuce\n\n\nIl décrit un élément qui vous facilitera la vie : une propriété statistique, un package, une fonction, une syntaxe R.\n\n\n\n\n\n\n\nBloc attention\n\n\nIl comprend une notion ou un élément important à bien maîtriser.\n\n\n\n\n\n\n\nBloc exercice\n\n\nIl comprend un court exercice de révision à la fin de chaque chapitre."
+  },
+  {
+    "objectID": "index.html#sect003",
+    "href": "index.html#sect003",
+    "title": "Traitement d’images satellites : un grand bol d’R",
+    "section": "Comment utiliser les données du livre pour reproduire les exemples?",
+    "text": "Comment utiliser les données du livre pour reproduire les exemples?\nCe livre comprend des exemples détaillés et appliqués dans R pour chacune des méthodes abordées. Ces exemples se basent sur des jeux de données structurés et mis à disposition avec le livre. Ils sont disponibles sur le repo github dans le sous-dossier data, à l’adresse https://github.com/SerieBoldR/TraitementImagesVol1/tree/main/data.\nUne autre option est de télécharger le repo complet du livre directement sur github (https://github.com/SerieBoldR/TraitementImagesVol1) en cliquant sur le bouton Code, puis le bouton Download ZIP (figure 1.1). Les données se trouvent alors dans le sous-dossier nommé data.\n\n\nFigure 2: Téléchargement de l’intégralité du livre"
+  },
+  {
+    "objectID": "index.html#sect004",
+    "href": "index.html#sect004",
+    "title": "Traitement d’images satellites : un grand bol d’R",
+    "section": "Structure du livre",
+    "text": "Structure du livre\nLe livre est organisé autour de quatre grandes parties.\nPartie 1. Importation et manipulation de données spatiales. Dans cette première partie, nous voyons comment importer, manipuler, cartographier et exporter des données spatiales dans R, principalement avec les packages sf pour les données vectorielles, terra pour les données matricielles (images) et tmap pour la cartographie (chapitre 1). Maîtriser les notions abordées dans ce chapitre constitue une étape préalable et indispensable à tout projet d’analyse spatiale. D’une part, avant d’analyser des données spatiales, il convient de les structurer (importation et manipulation) et de les explorer (cartographie). D’autre part, une fois la ou les méthodes d’analyse spatiale mises en œuvre, il convient de cartographier les résultats finaux et de les exporter au besoin dans un format de données géographiques (shapefile (shp), GeoPackage (GPKG), GeoJSON (geojson), sqlite (sqlite), GeoTiff, etc.).\nPartie 2. Transformations des données spatiales. Cette troisième partie comprend deux chapitres : les transformations spectrales (chapitre 3) et les transformations spatiales (chapitre 4).\nPartie 3. Classifications d’images. Cette troisième partie comprend deux chapitres : les classifications supervisées (chapitre 5) et non supervisées (chapitre 6).\nPartie 4. Données massives. Cette quatrième et dernière partie comprend un seul chapitre qui est dédié aux plateformes de mégadonnes chapitre 7, notammment Google Earth Engine."
+  },
+  {
+    "objectID": "index.html#sect005",
+    "href": "index.html#sect005",
+    "title": "Traitement d’images satellites : un grand bol d’R",
+    "section": "Remerciements",
+    "text": "Remerciements\nDe nombreuses personnes ont contribué à l’élaboration de ce manuel.\nCe projet a bénéficié du soutien pédagogique et financier de la fabriqueREL (ressources éducatives libres). Les différentes rencontres avec le comité de suivi nous ont permis de comprendre l’univers des ressources éducatives libres (REL) et notamment leurs fameux 5R (Retenir — Réutiliser — Réviser — Remixer — Redistribuer), de mieux définir le besoin pédagogique visé par ce manuel, d’identifier des ressources pédagogiques et des outils pertinents pour son élaboration. Ainsi, nous remercions chaleureusement les membres de la fabriqueREL pour leur soutien inconditionnel :\n\nMyriam Beaudet, bibliothécaire à l’Université de Sherbrooke.\nMarianne Dubé, coordonnatrice de la fabriqueREL, Université de Sherbrooke.\nSerge Piché, conseiller pédagogique, Université de Sherbrooke.\nClaude Potvin, conseiller en formation, Service de soutien à l’enseignement, Université Laval.\n\nNous remercions chaleureusement les personnes étudiantes des cours à modifier plus tard du Baccalauréat en géomatique appliquée à l’environnement et du Microprogramme de 1er cycle en géomatique appliquée du Département de géomatique appliquée de l’Université de Sherbrooke de la session d’été 2023 : à modifier plus tard.\nNous remercions aussi les membres du comité de révision pour leurs commentaires et suggestions très constructifs. Ce comité est composé de quatre personnes étudiantes du Département de géomatique appliquée de l’Université de Sherbrooke :\n\nÀ compléter plus tard.\nÀ compléter plus tard.\n\nFinalement, nous remercions Denise Latreille, réviseure linguistique et chargée de cours à l’Université Sherbrooke, pour la révision du manuel."
+  },
+  {
+    "objectID": "index.html#sect006",
+    "href": "index.html#sect006",
+    "title": "Traitement d’images satellites : un grand bol d’R",
+    "section": "Introduction aux images de télédétection",
+    "text": "Introduction aux images de télédétection\n\nRappel sur les fondements\nParticularités des images en télédétection\nRessources en ligne"
+  },
+  {
+    "objectID": "index.html#sect007",
+    "href": "index.html#sect007",
+    "title": "Traitement d’images satellites : un grand bol d’R",
+    "section": "\nPackages utilisés pour traiter des images",
+    "text": "Packages utilisés pour traiter des images\nListes des packages utilisés\nDans ce livre, nous utilisons de nombreux packages R que vous pouvez installer avec le code ci-dessous.\n\n# Liste des packages\nListePackages &lt;- c(\"dplyr\", \"factoextra\", \"RColorBrewer\",\n                   \"sf\", \"terra\", \"tmap\")\n# Packages non installés dans la liste\nPackagesNonInstalles &lt;- ListePackages[!(ListePackages %in% installed.packages()[,\"Package\"])]\n# Installation des packages manquants\nif(length(new.packages)) install.packages(PackagesNonInstalles)\n\nPhilosophie et packages dans R pour l’analyse d’images\nR 101"
+  },
+  {
+    "objectID": "00-auteurs.html",
+    "href": "00-auteurs.html",
+    "title": "À propos des auteurs",
+    "section": "",
+    "text": "Philippe Apparicio est professeur titulaire au Département de géomatique appliquée de l’Université de Sherbrooke. Il y enseigne aux programmes de 1er et 2e cycles de géomatique les cours Transport et mobilité durable, Modélisation et analyse spatiale et Géomatique appliquée à la gestion urbaine. Durant les dernières années, il a offert plusieurs formations aux Écoles d’été du Centre interuniversitaire québécois de statistiques sociales (CIQSS). Géographe de formation, ses intérêts de recherche incluent la justice et l’équité environnementale, la mobilité durable, les pollutions atmosphérique et sonore, et le vélo en ville. Il a publié une centaine d’articles scientifiques dans différents domaines des études urbaines et de la géographie mobilisant la géomatique et l’analyse spatiale.\nYacine Bouroubi est professeur titulaire au Département de géomatique appliquée de l’Université de Sherbrooke. Il y enseigne aux programmes de 1er et 2e cycles de géomatique les cours Transport et mobilité durable, Modélisation et analyse spatiale et Géomatique appliquée à la gestion urbaine. Durant les dernières années, il a offert plusieurs formations aux Écoles d’été du Centre interuniversitaire québécois de statistiques sociales (CIQSS). Géographe de formation, ses intérêts de recherche incluent la justice et l’équité environnementale, la mobilité durable, les pollutions atmosphérique et sonore, et le vélo en ville. Il a publié une centaine d’articles scientifiques dans différents domaines des études urbaines et de la géographie mobilisant la géomatique et l’analyse spatiale.\nSamuel Foucher est professeur titulaire au Département de géomatique appliquée de l’Université de Sherbrooke. Il y enseigne aux programmes de 1er et 2e cycles de géomatique les cours Transport et mobilité durable, Modélisation et analyse spatiale et Géomatique appliquée à la gestion urbaine. Durant les dernières années, il a offert plusieurs formations aux Écoles d’été du Centre interuniversitaire québécois de statistiques sociales (CIQSS). Géographe de formation, ses intérêts de recherche incluent la justice et l’équité environnementale, la mobilité durable, les pollutions atmosphérique et sonore, et le vélo en ville. Il a publié une centaine d’articles scientifiques dans différents domaines des études urbaines et de la géographie mobilisant la géomatique et l’analyse spatiale.\nMickaël Germain est professeur titulaire au Département de géomatique appliquée de l’Université de Sherbrooke. Il y enseigne aux programmes de 1er et 2e cycles de géomatique les cours Transport et mobilité durable, Modélisation et analyse spatiale et Géomatique appliquée à la gestion urbaine. Durant les dernières années, il a offert plusieurs formations aux Écoles d’été du Centre interuniversitaire québécois de statistiques sociales (CIQSS). Géographe de formation, ses intérêts de recherche incluent la justice et l’équité environnementale, la mobilité durable, les pollutions atmosphérique et sonore, et le vélo en ville. Il a publié une centaine d’articles scientifiques dans différents domaines des études urbaines et de la géographie mobilisant la géomatique et l’analyse spatiale."
+  },
+  {
+    "objectID": "01-ImportationManipulationImages.html#sec-010",
+    "href": "01-ImportationManipulationImages.html#sec-010",
+    "title": "1  Importation et manipulation de données spatiales",
+    "section": "\n1.1 Bases de Quarto…",
+    "text": "1.1 Bases de Quarto…\nVoici comment faire une liste :\n\ntexte en gras\n\ntexte en italique\n\nGras et italique\n\n\nR2 et NO2\n\nPetites majuscules\nPour un lien Web, Département de géomatique appliquée.\n\nVoici comment intégrer des équations LaTeX. La formule de la distance euclidienne (équation 1.2). Pour écrire directement une équation dans le texte, il suffit de \\(E = mc^2\\).\n\\[\nd_{ij} = 2R \\cdot \\text{ arcsin} \\left( \\sqrt{\\text{sin}^2 \\left( \\frac{\\delta _i - \\delta _j}{2} \\right) + \\text{cos }\\delta _i \\cdot \\text{cos }\\delta _j \\cdot \\text{sin}^2 \\left( \\frac{\\phi _i - \\phi _j}{2} \\right)} \\right)\n\\tag{1.1}\\]\n\\[\nd_{ij} = \\sqrt{(x_i-x_j)^2+(y_i-y_j)^2}\n\\tag{1.2}\\]\n\nIntégrer une figure (image) et l’appeler dans le texte (figure 1.1). À la figure 1.1, … Notez que la numérotation des figures, des tableaux, des équations est automatique.\n\n\n\nFigure 1.1: Téléchargement de l’intégralité du livre\n\n\nLes références sont au format BibTeX. Par exemple, vous pouvez les télécharger de Google Scholar et les intégrer à la fin du fichier references.bib. Voici comment intégrer des références (Mather et Koch 2022; Richards, Richards et al. 2022). Selon Ferdinand Boon et Guy Rochon (1992).\n\nLe code R ci-dessous permet de faire un tableau dans un chunk! Pour appeler le tableau (tableau 1.1).\n\n\n\n\nTableau 1.1: Matrices de pondération spatiale selon la géométrie\n\n\n\n\n\n\n\n\nMatrice\nPoints\nLignes\nPolyg.\nRaster\n\n\n\nPartage d’un nœud (Queen)\n\nX\nX\nX\n\n\nPartage d’un segment (Rook)\n\nX\nX\nX\n\n\nPartage d’un nœud et ordre d’adjacence (Queen)\n\nX\nX\nX\n\n\nPartage d’un segment et ordre d’adjacence (Rook)\n\nX\nX\nX\n\n\nConnectivité selon la distance\nX\nX\nX\nX\n\n\nInverse de la distance\nX\nX\nX\nX\n\n\nInverse de la distance au carré\nX\nX\nX\nX\n\n\nNombre de plus proches voisins\nX\nX\nX\nX"
+  },
+  {
+    "objectID": "01-ImportationManipulationImages.html#sec-011",
+    "href": "01-ImportationManipulationImages.html#sec-011",
+    "title": "1  Importation et manipulation de données spatiales",
+    "section": "\n1.2 Importation d’images",
+    "text": "1.2 Importation d’images\n\n1.2.1 Manipulation d’une matrice\n\n1.2.2 Formats de données\nVoici comment faire une liste\n\nFormat RVB\n\njpeg\npng\n\n\nGeoTiff\nCOG\nNetCDF\nHDF5\n\n1.2.3 Métadonnées des images\n\n1.2.4 Données en géoscience\nCalibration, unités, données manquantes, données éparses.\nnetcdf, xarray, GRIB.\nDonnées météos, exemple avec SWOT."
+  },
+  {
+    "objectID": "01-ImportationManipulationImages.html#sec-012",
+    "href": "01-ImportationManipulationImages.html#sec-012",
+    "title": "1  Importation et manipulation de données spatiales",
+    "section": "\n1.3 Importation de données vectorielles",
+    "text": "1.3 Importation de données vectorielles\n\n1.3.1 Importation d’un fichier shapefile\n\n\n1.3.2 Importation d’une couche dans un GeoPackage\n\n\n1.3.3 Importation d’une couche dans une geodatabase d’ESRI\n\n1.3.4 Importation d’un fichier shapefile"
+  },
+  {
+    "objectID": "01-ImportationManipulationImages.html#sec-013",
+    "href": "01-ImportationManipulationImages.html#sec-013",
+    "title": "1  Importation et manipulation de données spatiales",
+    "section": "\n1.4 Manipulation d’images",
+    "text": "1.4 Manipulation d’images\n\n1.4.1 Mosaïquage, masquage et découpage\n\n1.4.2 Changement de projection cartographique\n\n1.4.3 Recalage d’images et co-registration\n\n1.4.4 Requêtes attributaires"
+  },
+  {
+    "objectID": "01-ImportationManipulationImages.html#sec-014",
+    "href": "01-ImportationManipulationImages.html#sec-014",
+    "title": "1  Importation et manipulation de données spatiales",
+    "section": "\n1.5 Manipulation de données vectorielles",
+    "text": "1.5 Manipulation de données vectorielles"
+  },
+  {
+    "objectID": "01-ImportationManipulationImages.html#sec-015",
+    "href": "01-ImportationManipulationImages.html#sec-015",
+    "title": "1  Importation et manipulation de données spatiales",
+    "section": "\n1.6 Quiz de révision du chapitre",
+    "text": "1.6 Quiz de révision du chapitre\n\n\n\n\n\nLa classe sf est composée de trois éléments :\n\n\nRelisez au besoin la section 1.2.\n\n\n\n\n\n\nsimple feature geometry (sfg) : géométrie d’une observation\n\n\n\n\n\n\n\nsimple feature column (sfc) : liste toutes les géométries d’une couche\n\n\n\n\n\n\n\ndata.fame : données attributaires\n\n\n\n\n\n\n\nraster : données images\n\n\n\n\n\n\n\n\n\n\nLaquelle de ces fonctions permet de changer la projection cartographique d’une couche géographique?\n\n\nRelisez au besoin le début de la section 1.3.\n\n\n\n\n\n\nst_crs(x)\n\n\n\n\n\n\n\nst_transform(x, crs)\n\n\n\n\n\n\n\nst_is_longlat(x)\n\n\n\n\n\n\n\n\n\n\nLaquelle de ces fonctions n’est pas une fonction géométrique sur une couche?\n\n\nRelisez au besoin la section 1.3.\n\n\n\n\n\n\nst_bbox(x)\n\n\n\n\n\n\n\nst_union(x)\n\n\n\n\n\n\n\nst_point_on_surface(x)\n\n\n\n\n\n\n\nst_crop(x, y, xmin, ymin, xmax, ymax)\n\n\n\n\n\n\n\nst_centroid(x)\n\n\n\n\n\n\n\n\n\n\nComparativement à l’algorithme de Douglas et Peucker, que permet l’algorithme de Visvalingam lors de la simplification des contours?\n\n\nRelisez au besoin la section 1.3.2.\n\n\n\n\n\n\nIl est plus rapide.\n\n\n\n\n\n\n\nIl permet de conserver les frontières.\n\n\n\n\n\n\n\n\n\n\nTous les points sont compris dans leur enveloppe convexe.\n\n\nRelisez au besoin la section 1.3.2.\n\n\n\n\n\n\nVrai\n\n\n\n\n\n\n\nFaux\n\n\n\n\n\n\n\n\n\n\nQuelles sont les quatre fonctions de mesures géométriques et de récupération des coordonnées géographiques?\n\n\nRelisez au besoin la section 1.3.\n\n\n\n\n\n\nst_area(x)\n\n\n\n\n\n\n\nst_length(x)\n\n\n\n\n\n\n\nst_distance(x,y)\n\n\n\n\n\n\n\nst_coordinates(x)\n\n\n\n\n\n\n\nst_union(x)\n\n\n\n\n\n\n\n\n\n\nQuelle est la différence entre les fonctions st_intersects(x, y) et st_intersection(x, y)?\n\n\nRelisez le deuxième encadré à la ?sec-0126.\n\n\n\n\n\n\nElles génèrent le même résultat.\n\n\n\n\n\n\n\nLa première est une requête spatiale, la seconde renvoie l’intersection entre deux couches.\n\n\n\n\n\n\n\nLa première renvoie l’intersection entre deux couches, la seconde est une requête spatiale.\n\n\n\n\n\n\n\n\n\n\nLaquelle des fonctions sf permet d’exporter des données vectorielles?\n\n\nRelisez au besoin la section 1.5.\n\n\n\n\n\n\nst_read()\n\n\n\n\n\n\n\nst_write()\n\n\n\n\n\n\n\nwriteRaster()\n\n\n\n\n\n\n\n\n\nVérifier votre résultat"
+  },
+  {
+    "objectID": "01-ImportationManipulationImages.html#sec-016",
+    "href": "01-ImportationManipulationImages.html#sec-016",
+    "title": "1  Importation et manipulation de données spatiales",
+    "section": "\n1.7 Exercices de révision",
+    "text": "1.7 Exercices de révision\n\n\n\n\n\nExercice 1. À compléter\n\n\n\nlibrary(sf)\nlibrary(terra)\n# ...\n# à compléter\n\nCorrection à la section 8.1.1.\n\n\n\n\n\n\n\nExercice 2. À compléter\n\n\n\nlibrary(sf)\nlibrary(terra)\n# ...\n# à compléter\n\nCorrection à la section 8.1.2.\n\n\n\n\n\n\n\nExercice 3. À compléter\n\n\n\nlibrary(sf)\nlibrary(terra)\n# ...\n# à compléter\n\nCorrection à la section 8.1.3.\n\n\n\n\n\n\nBonn, Ferdinand et Guy Rochon. 1992. Précis de télédétection. Volume 1 : principes et méthodes. Presses de l’université du Québec; Agence universitaire de la Francophonie.\n\n\nMather, Paul M et Magaly Koch. 2022. Computer processing of remotely-sensed images. John Wiley & Sons.\n\n\nRichards, John A, John A Richards et al. 2022. Remote sensing digital image analysis. Vol. 5. Springer."
+  },
+  {
+    "objectID": "02-RehaussementVisualisationImages.html#sec-021",
+    "href": "02-RehaussementVisualisationImages.html#sec-021",
+    "title": "2  Réhaussement et visualisation d’images",
+    "section": "\n2.1 Visualisation sur le Web",
+    "text": "2.1 Visualisation sur le Web\nWMS"
+  },
+  {
+    "objectID": "02-RehaussementVisualisationImages.html#sec-022",
+    "href": "02-RehaussementVisualisationImages.html#sec-022",
+    "title": "2  Réhaussement et visualisation d’images",
+    "section": "\n2.2 Réhaussement visuel",
+    "text": "2.2 Réhaussement visuel\nCalcul d’histogrammes, étirement, égalisation, styling"
+  },
+  {
+    "objectID": "02-RehaussementVisualisationImages.html#sec-023",
+    "href": "02-RehaussementVisualisationImages.html#sec-023",
+    "title": "2  Réhaussement et visualisation d’images",
+    "section": "\n2.3 Composés couleurs",
+    "text": "2.3 Composés couleurs\n\nVraies couleurs\nFausses couleurs"
+  },
+  {
+    "objectID": "02-RehaussementVisualisationImages.html#sec-024",
+    "href": "02-RehaussementVisualisationImages.html#sec-024",
+    "title": "2  Réhaussement et visualisation d’images",
+    "section": "\n2.4 Visualisation 3D",
+    "text": "2.4 Visualisation 3D\ndrapper une image satellite sur un DEM"
+  },
+  {
+    "objectID": "02-RehaussementVisualisationImages.html#sec-025",
+    "href": "02-RehaussementVisualisationImages.html#sec-025",
+    "title": "2  Réhaussement et visualisation d’images",
+    "section": "\n2.5 Quiz de révision du chapitre",
+    "text": "2.5 Quiz de révision du chapitre\n\n\n\n\n\nParmi les matrices de pondération spatiale ci-dessous, lesquelles sont des matrices de contiguïté?\n\n\nRelisez au besoin la section 2.2.\n\n\n\n\n\n\nPartage d’un nœud\n\n\n\n\n\n\n\nPartage d’un segment\n\n\n\n\n\n\n\nPartage d’un nœud et ordre d’adjacence\n\n\n\n\n\n\n\nPartage d’un segment et ordre d’adjacence\n\n\n\n\n\n\n\nConnectivité selon la distance\n\n\n\n\n\n\n\n\n\n\nEn anglais, comment est appelée une matrice selon le partage d’un nœud?\n\n\nRelisez au besoin le début de la section 2.2.\n\n\n\n\n\n\nRook\n\n\n\n\n\n\n\nQueen\n\n\n\n\n\n\n\n\n\n\nComparativement à une matrice de l’inverse de la distance, une matrice de l’inverse de la distance au carré accorde un poids plus important aux entités proches.\n\n\nRelisez au besoin la section 2.1.\n\n\n\n\n\n\nVrai\n\n\n\n\n\n\n\nFaux\n\n\n\n\n\n\n\n\n\n\nQuels sont les avantages de la standardisation en ligne des matrices de pondération spatiale?\n\n\nRelisez au besoin la section 2.2.\n\n\n\n\n\n\nLa somme de chaque ligne est égale à 1.\n\n\n\n\n\n\n\nLa somme de l’ensemble de la matrice est égale au nombre d’entités spatiales.\n\n\n\n\n\n\n\nLa standardisation permet de comparer la dépendance spatiale selon différentes matrices.\n\n\n\n\n\n\n\nLa standardisation augmente la vitesse des calculs.\n\n\n\n\n\n\n\n\n\n\nQuelle est la différence entre les deux mesures locales de Getis et Ord?\n\n\nRelisez au besoin la section 2.2.\n\n\n\n\n\n\nGi* tient compte à la fois des valeurs des entités voisines ou proches, mais aussi de celle de i.\n\n\n\n\n\n\n\nContrairement à Gi, Gi* a un z-score.\n\n\n\n\n\n\n\n\n\n\nParmi les quatre catégories de la typologie basée sur le nuage de points du I de Moran, lesquelles renvoient à de l’autocorrélation spatiale locale positive?\n\n\nRelisez au besoin la section 2.2.\n\n\n\n\n\n\nHH\n\n\n\n\n\n\n\nLL\n\n\n\n\n\n\n\nHL\n\n\n\n\n\n\n\nLH\n\n\n\n\n\n\n\n\n\n\nLe village gaulois correspond à quelle catégorie?\n\n\nRelisez au besoin la section 2.1.\n\n\n\n\n\n\nHH\n\n\n\n\n\n\n\nLL\n\n\n\n\n\n\n\nHL\n\n\n\n\n\n\n\nLH\n\n\n\n\n\n\n\n\n\n\nQuelles sont les trois manières de tester la significativité des mesures d’autocorrélation globales?\n\n\nRelisez au besoin la section 2.1.\n\n\n\n\n\n\nAvec l’hypothèse de la normalité\n\n\n\n\n\n\n\nEn relançant plusieurs fois les calculs\n\n\n\n\n\n\n\nAvec l’hypothèse de la randomisation\n\n\n\n\n\n\n\nAvec la méthode Monte-Carlo (habituellement avec 999 échantillons)\n\n\n\n\n\n\n\n\n\nVérifier votre résultat"
+  },
+  {
+    "objectID": "02-RehaussementVisualisationImages.html#sec-027",
+    "href": "02-RehaussementVisualisationImages.html#sec-027",
+    "title": "2  Réhaussement et visualisation d’images",
+    "section": "\n2.6 Exercices de révision",
+    "text": "2.6 Exercices de révision\n\n\n\n\n\nExercice 1. À compléter\n\n\n\nlibrary(sf)\nlibrary(terra)\n# ...\n# à compléter\n\nCorrection à la section 8.2.1.\n\n\n\n\n\n\n\nExercice 2. À compléter\n\n\n\nlibrary(sf)\nlibrary(terra)\n# ...\n# à compléter\n\nCorrection à la section 8.2.2.\n\n\n\n\n\n\n\nExercice 3. À compléter\n\n\n\nlibrary(sf)\nlibrary(terra)\n# ...\n# à compléter\n\nCorrection à la section 8.2.3."
+  },
+  {
+    "objectID": "03-TransformationSpectrales.html#sec-031",
+    "href": "03-TransformationSpectrales.html#sec-031",
+    "title": "3  Transformations spectrales",
+    "section": "\n3.1 Indices spectraux",
+    "text": "3.1 Indices spectraux"
+  },
+  {
+    "objectID": "03-TransformationSpectrales.html#sec-032",
+    "href": "03-TransformationSpectrales.html#sec-032",
+    "title": "3  Transformations spectrales",
+    "section": "\n3.2 Réduction de dimension",
+    "text": "3.2 Réduction de dimension\n\n3.2.1 Analyses en composantes principales\n\n\n\n\n\nQuels problèmes posent l’utilisation des méthodes classiques d’analyse spatiale pour des données se produisant sur un réseau?\n\n\nRelisez au besoin la section 6.1.\n\n\n\n\n\n\nLa distance euclidienne tend à sous-estimer les distances réelles.\n\n\n\n\n\n\n\nLa distance euclidienne tend à surestimer les distances réelles.\n\n\n\n\n\n\n\nLe réseau est un espace comportant davantage de dimensions qu’un espace planaire.\n\n\n\n\n\n\n\nLe réseau est un espace ne respectant pas les hypothèses d’homogénéité et d’isotropie de l’espace planaire.\n\n\n\n\n\n\n\nLes méthodes classiques analysent des portions de l’espace en dehors du réseau.\n\n\n\n\n\n\n\n\n\n\nPour adapter la méthode classique du Kernel Density Estimate, il est nécessaire de :\n\n\nRelisez au besoin le début de la section 6.2.\n\n\n\n\n\n\nUtiliser une distance réseau plutôt qu’euclidienne.\n\n\n\n\n\n\n\nN’estimer les densités que le long des lixels représentant des fragments réguliers du réseau.\n\n\n\n\n\n\n\nAdapter la fonction de Kernel pour tenir compte de la division de la masse aux intersections.\n\n\n\n\n\n\n\nAppliquer une pénalité aux portions du réseau avec peu d’évènements.\n\n\n\n\n\n\n\n\n\n\nPour une NKDE, il est uniquement possible de calculer des densités selon une bandwidth fixe.\n\n\nRelisez au besoin la section 6.2.\n\n\n\n\n\n\nVrai\n\n\n\n\n\n\n\nFaux\n\n\n\n\n\n\n\n\n\n\nContrairement à la KDE classique, la NKDE est moins sensible au choix de la bandwidth.\n\n\nRelisez au besoin la section 6.3.\n\n\n\n\n\n\nVrai\n\n\n\n\n\n\n\nFaux\n\n\n\n\n\n\n\n\n\n\nL’extension spatio-temporelle du NKDE (TNKDE) consiste à :\n\n\nRelisez au besoin la section 6.3.\n\n\n\n\n\n\nCalculer une somme des densités spatiales et temporelles des évènements le long du réseau.\n\n\n\n\n\n\n\nCalculer le produit des densités spatiales et temporelles des évènements le long du réseau.\n\n\n\n\n\n\n\nCalculer l’intégrale des densités spatiales et temporelles des évènements le long du réseau.\n\n\n\n\n\n\n\n\n\n\nPour une TNKDE, il est uniquement possible de calculer des densités selon une bandwidth fixe.\n\n\nRelisez au besoin la section 6.3.\n\n\n\n\n\n\nVrai\n\n\n\n\n\n\n\nFaux\n\n\n\n\n\n\n\n\n\n\nLes méthodes KDE, NKDE, et TNKDE peuvent être vues comme :\n\n\nRelisez au besoin la section 6.2.\n\n\n\n\n\n\nDes méthodes descriptives visant à résumer un grand ensemble d’évènements en une carte de chaleur plus facilement interprétable.\n\n\n\n\n\n\n\nDes méthodes inférentielles permettant de déterminer statistiquement la présence de points chauds ou de points froids.\n\n\n\n\n\n\n\nDes algorithmes de type boite noire réduisant la dimensionnalité des données.\n\n\n\n\n\n\n\n\n\n\nL’utilisation d’une distance réseau plutôt qu’euclidienne pour un algorithme DBSCAN risque de :\n\n\nRelisez au besoin la section 6.5.\n\n\n\n\n\n\nAugmenter la taille des groupes détectés par l’algorithme, car la recherche de voisin sera plus facile sur le réseau\n\n\n\n\n\n\n\nRéduire la taille des groupes formés par l’algorithme, car la distance euclidienne tend à sous-estimer les distances réelles sur le réseau\n\n\n\n\n\n\n\n\n\nVérifier votre résultat"
+  },
+  {
+    "objectID": "03-TransformationSpectrales.html#sec-037",
+    "href": "03-TransformationSpectrales.html#sec-037",
+    "title": "3  Transformations spectrales",
+    "section": "\n3.3 Exercices de révision",
+    "text": "3.3 Exercices de révision\n\n\n\n\n\nExercice 1. À compléter\n\n\n\nlibrary(sf)\nlibrary(terra)\n# ...\n# à compléter\n\nCorrection à la section 8.3.1.\n\n\n\n\n\n\n\nExercice 2. À compléter\n\n\n\nlibrary(sf)\nlibrary(terra)\n# ...\n# à compléter\n\nCorrection à la section 8.3.2.\n\n\n\n\n\n\n\nExercice 3. À compléter\n\n\n\nlibrary(sf)\nlibrary(terra)\n# ...\n# à compléter\n\nCorrection à la section 8.3.3."
+  },
+  {
+    "objectID": "04-TransformationSpatiales.html#sec-041",
+    "href": "04-TransformationSpatiales.html#sec-041",
+    "title": "4  Transformations spatiales",
+    "section": "\n4.1 Analyse fréquentielle",
+    "text": "4.1 Analyse fréquentielle"
+  },
+  {
+    "objectID": "04-TransformationSpatiales.html#sec-042",
+    "href": "04-TransformationSpatiales.html#sec-042",
+    "title": "4  Transformations spatiales",
+    "section": "\n4.2 Filtrage d’image",
+    "text": "4.2 Filtrage d’image"
+  },
+  {
+    "objectID": "04-TransformationSpatiales.html#sec-043",
+    "href": "04-TransformationSpatiales.html#sec-043",
+    "title": "4  Transformations spatiales",
+    "section": "\n4.3 Segmentation",
+    "text": "4.3 Segmentation"
+  },
+  {
+    "objectID": "04-TransformationSpatiales.html#sec-044",
+    "href": "04-TransformationSpatiales.html#sec-044",
+    "title": "4  Transformations spatiales",
+    "section": "\n4.4 Vectorisation et rasterisation",
+    "text": "4.4 Vectorisation et rasterisation"
+  },
+  {
+    "objectID": "04-TransformationSpatiales.html#sec-045",
+    "href": "04-TransformationSpatiales.html#sec-045",
+    "title": "4  Transformations spatiales",
+    "section": "\n4.5 Analyse de terrain",
+    "text": "4.5 Analyse de terrain\n\n4.5.1 Élévation\n\n4.5.2 Pente\n\n4.5.3 Ombrage\n\n4.5.4 Visibilité"
+  },
+  {
+    "objectID": "04-TransformationSpatiales.html#sec-046",
+    "href": "04-TransformationSpatiales.html#sec-046",
+    "title": "4  Transformations spatiales",
+    "section": "\n4.6 Quiz de révision du chapitre",
+    "text": "4.6 Quiz de révision du chapitre\n\n\n\n\n\nQuels problèmes posent l’utilisation des méthodes classiques d’analyse spatiale pour des données se produisant sur un réseau?\n\n\nRelisez au besoin la section 6.1.\n\n\n\n\n\n\nLa distance euclidienne tend à sous-estimer les distances réelles.\n\n\n\n\n\n\n\nLa distance euclidienne tend à surestimer les distances réelles.\n\n\n\n\n\n\n\nLe réseau est un espace comportant davantage de dimensions qu’un espace planaire.\n\n\n\n\n\n\n\nLe réseau est un espace ne respectant pas les hypothèses d’homogénéité et d’isotropie de l’espace planaire.\n\n\n\n\n\n\n\nLes méthodes classiques analysent des portions de l’espace en dehors du réseau.\n\n\n\n\n\n\n\n\n\n\nPour adapter la méthode classique du Kernel Density Estimate, il est nécessaire de :\n\n\nRelisez au besoin le début de la section 6.2.\n\n\n\n\n\n\nUtiliser une distance réseau plutôt qu’euclidienne.\n\n\n\n\n\n\n\nN’estimer les densités que le long des lixels représentant des fragments réguliers du réseau.\n\n\n\n\n\n\n\nAdapter la fonction de Kernel pour tenir compte de la division de la masse aux intersections.\n\n\n\n\n\n\n\nAppliquer une pénalité aux portions du réseau avec peu d’évènements.\n\n\n\n\n\n\n\n\n\n\nPour une NKDE, il est uniquement possible de calculer des densités selon une bandwidth fixe.\n\n\nRelisez au besoin la section 6.2.\n\n\n\n\n\n\nVrai\n\n\n\n\n\n\n\nFaux\n\n\n\n\n\n\n\n\n\n\nContrairement à la KDE classique, la NKDE est moins sensible au choix de la bandwidth.\n\n\nRelisez au besoin la section 6.3.\n\n\n\n\n\n\nVrai\n\n\n\n\n\n\n\nFaux\n\n\n\n\n\n\n\n\n\n\nL’extension spatio-temporelle du NKDE (TNKDE) consiste à :\n\n\nRelisez au besoin la section 6.3.\n\n\n\n\n\n\nCalculer une somme des densités spatiales et temporelles des évènements le long du réseau.\n\n\n\n\n\n\n\nCalculer le produit des densités spatiales et temporelles des évènements le long du réseau.\n\n\n\n\n\n\n\nCalculer l’intégrale des densités spatiales et temporelles des évènements le long du réseau.\n\n\n\n\n\n\n\n\n\n\nPour une TNKDE, il est uniquement possible de calculer des densités selon une bandwidth fixe.\n\n\nRelisez au besoin la section 6.3.\n\n\n\n\n\n\nVrai\n\n\n\n\n\n\n\nFaux\n\n\n\n\n\n\n\n\n\n\nLes méthodes KDE, NKDE, et TNKDE peuvent être vues comme :\n\n\nRelisez au besoin la section 6.2.\n\n\n\n\n\n\nDes méthodes descriptives visant à résumer un grand ensemble d’évènements en une carte de chaleur plus facilement interprétable.\n\n\n\n\n\n\n\nDes méthodes inférentielles permettant de déterminer statistiquement la présence de points chauds ou de points froids.\n\n\n\n\n\n\n\nDes algorithmes de type boite noire réduisant la dimensionnalité des données.\n\n\n\n\n\n\n\n\n\n\nL’utilisation d’une distance réseau plutôt qu’euclidienne pour un algorithme DBSCAN risque de :\n\n\nRelisez au besoin la section 6.5.\n\n\n\n\n\n\nAugmenter la taille des groupes détectés par l’algorithme, car la recherche de voisin sera plus facile sur le réseau\n\n\n\n\n\n\n\nRéduire la taille des groupes formés par l’algorithme, car la distance euclidienne tend à sous-estimer les distances réelles sur le réseau\n\n\n\n\n\n\n\n\n\nVérifier votre résultat"
+  },
+  {
+    "objectID": "04-TransformationSpatiales.html#sec-047",
+    "href": "04-TransformationSpatiales.html#sec-047",
+    "title": "4  Transformations spatiales",
+    "section": "\n4.7 Exercices de révision",
+    "text": "4.7 Exercices de révision\n\n\n\n\n\nExercice 1. À compléter\n\n\n\nlibrary(sf)\nlibrary(terra)\n# ...\n# à compléter\n\nCorrection à la section 8.4.1.\n\n\n\n\n\n\n\nExercice 2. À compléter\n\n\n\nlibrary(sf)\nlibrary(terra)\n# ...\n# à compléter\n\nCorrection à la section 8.4.2.\n\n\n\n\n\n\n\nExercice 3. À compléter\n\n\n\nlibrary(sf)\nlibrary(terra)\n# ...\n# à compléter\n\nCorrection à la section 8.4.3."
+  },
+  {
+    "objectID": "05-ClassificationsSupervisees.html#sec-051",
+    "href": "05-ClassificationsSupervisees.html#sec-051",
+    "title": "5  Classifications d’images supervisées",
+    "section": "\n5.1 Classification d’images pixel par pixel",
+    "text": "5.1 Classification d’images pixel par pixel\n\n5.1.1 Parallélépipède\n\n5.1.2 Méthodes paramétriques\n\n5.1.3 Méthodes non paramétriques\n\n5.1.4 SVEM, réseaux de neurones, forêts aléatoires"
+  },
+  {
+    "objectID": "05-ClassificationsSupervisees.html#sec-052",
+    "href": "05-ClassificationsSupervisees.html#sec-052",
+    "title": "5  Classifications d’images supervisées",
+    "section": "\n5.2 Segmentation d’images",
+    "text": "5.2 Segmentation d’images\n\n5.2.1 Classification objet\n\n5.2.2 Approches par arbre (BPT, etc.)"
+  },
+  {
+    "objectID": "05-ClassificationsSupervisees.html#sec-053",
+    "href": "05-ClassificationsSupervisees.html#sec-053",
+    "title": "5  Classifications d’images supervisées",
+    "section": "\n5.3 Quiz de révision du chapitre",
+    "text": "5.3 Quiz de révision du chapitre\n\n\n\n\n\nQuels sont les trois principaux problèmes résolus en analyse de réseau?\n\n\nRelisez au besoin la section 5.1.2.\n\n\n\n\n\n\nTrouver le trajet le plus court ou le plus rapide entre deux points (algorithme de Dijkstra)\n\n\n\n\n\n\n\nTrouver la route optimale comprenant plusieurs arrêts (problème du voyageur de commerce)\n\n\n\n\n\n\n\nDéfinir des zones de desserte autour d’une origine (algorithme de Dijkstra)\n\n\n\n\n\n\n\nMesurer la dépendance spatiale\n\n\n\n\n\n\n\n\n\n\nQuels sont les quatre autres problèmes résolus en analyse de réseau?\n\n\nRelisez au besoin la section 5.1.2.\n\n\n\n\n\n\nTrouver les k services les plus proches à partir d’une origine\n\n\n\n\n\n\n\nConstruire une matrice de distance origines-destinations\n\n\n\n\n\n\n\nRépartir aléatoirement des points dans un territoire donné\n\n\n\n\n\n\n\nRésoudre le problème de tournées de véhicules\n\n\n\n\n\n\n\nRéaliser un modèle localisation-affectation\n\n\n\n\n\n\n\n\n\n\nQuels sont les trois fichiers nécessaires pour construire un réseau multimode avec R5R?\n\n\nRelisez au besoin le début de la section 5.1.2.\n\n\n\n\n\n\nUn fichier pbf pour les données d’OpenStreetMap\n\n\n\n\n\n\n\nUn ou plusieurs fichiers GTFS\n\n\n\n\n\n\n\nUn fichier pour les bâtiments\n\n\n\n\n\n\n\nUn fichier GeoTIFF d’élévation\n\n\n\n\n\n\n\n\n\n\nQuelle fonction de R5R permet de construire un réseau multimode?\n\n\nRelisez au besoin la section 5.2.\n\n\n\n\n\n\ndetailed_itineraries()\n\n\n\n\n\n\n\nsetup_r5()\n\n\n\n\n\n\n\ntravel_time_matrix()\n\n\n\n\n\n\n\n\n\n\nQuelle fonction de R5R permet de construire un itinéraire?\n\n\nRelisez au besoin la section 5.2.\n\n\n\n\n\n\ndetailed_itineraries()\n\n\n\n\n\n\n\nsetup_r5()\n\n\n\n\n\n\n\ntravel_time_matrix()\n\n\n\n\n\n\n\n\n\n\nQuelle fonction de R5R permet de construire une matrice origine-destination?\n\n\nRelisez au besoin la section 5.2.\n\n\n\n\n\n\ndetailed_itineraries()\n\n\n\n\n\n\n\nsetup_r5()\n\n\n\n\n\n\n\ntravel_time_matrix()\n\n\n\n\n\n\n\n\n\n\nPour évaluer l’accessibilité selon la conceptualisation de la proximité immédiate, quelle mesure d’accessibilité utilisez-vous?\n\n\nRelisez au besoin la section 5.2.\n\n\n\n\n\n\nDistance entre l’origine et le service le plus proche\n\n\n\n\n\n\n\nNombre de services présents à moins de n mètres ou minutes\n\n\n\n\n\n\n\nDistance moyenne entre une origine et n services\n\n\n\n\n\n\n\nModèles gravitaires et méthodes two-step floating catchment area (2SFCA)\n\n\n\n\n\n\n\n\n\n\nPour évaluer l’accessibilité selon la conceptualisation de l’offre et la demande, quelle mesure d’accessibilité utilisez-vous?\n\n\nRelisez au besoin la section 5.2.\n\n\n\n\n\n\nDistance entre l’origine et le service le plus proche\n\n\n\n\n\n\n\nNombre de services présents à moins de n mètres ou minutes\n\n\n\n\n\n\n\nDistance moyenne entre une origine et n services\n\n\n\n\n\n\n\nModèles gravitaires et méthodes two-step floating catchment area (2SFCA)\n\n\n\n\n\n\n\n\n\n\nPour évaluer l’accessibilité selon l’offre de services dans l’environnement immédiat, quelle mesure d’accessibilité utilisez-vous?\n\n\nRelisez au besoin la section 5.2.\n\n\n\n\n\n\nDistance entre l’origine et le service le plus proche\n\n\n\n\n\n\n\nNombre de services présents à moins de n mètres ou minutes\n\n\n\n\n\n\n\nDistance moyenne entre une origine et n services\n\n\n\n\n\n\n\nModèles gravitaires et méthodes two-step floating catchment area (2SFCA)\n\n\n\n\n\n\n\n\n\nVérifier votre résultat"
+  },
+  {
+    "objectID": "05-ClassificationsSupervisees.html#sec-054",
+    "href": "05-ClassificationsSupervisees.html#sec-054",
+    "title": "5  Classifications d’images supervisées",
+    "section": "\n5.4 Exercices de révision",
+    "text": "5.4 Exercices de révision\n\n\n\n\n\nExercice 1. À compléter\n\n\n\nlibrary(sf)\nlibrary(terra)\n# ...\n# à compléter\n\nCorrection à la section 8.6.1.\n\n\n\n\n\n\n\nExercice 2. À compléter\n\n\n\nlibrary(sf)\nlibrary(terra)\n# ...\n# à compléter\n\nCorrection à la section 8.6.2.\n\n\n\n\n\n\n\nExercice 3. À compléter\n\n\n\nlibrary(sf)\nlibrary(terra)\n# ...\n# à compléter\n\nCorrection à la section 8.6.3."
+  },
+  {
+    "objectID": "06-ClassificationsNonSupervisees.html#sec-061",
+    "href": "06-ClassificationsNonSupervisees.html#sec-061",
+    "title": "6  Classifications d’images non supervisées",
+    "section": "\n6.1 Classifications strictes",
+    "text": "6.1 Classifications strictes\n\n6.1.1 K-means\n\n6.1.2 K-mediodes\n\n6.1.3 Isodata"
+  },
+  {
+    "objectID": "06-ClassificationsNonSupervisees.html#sec-062",
+    "href": "06-ClassificationsNonSupervisees.html#sec-062",
+    "title": "6  Classifications d’images non supervisées",
+    "section": "\n6.2 Classifications floues",
+    "text": "6.2 Classifications floues"
+  },
+  {
+    "objectID": "06-ClassificationsNonSupervisees.html#sec-0621",
+    "href": "06-ClassificationsNonSupervisees.html#sec-0621",
+    "title": "6  Classifications d’images non supervisées",
+    "section": "\n6.3 C-Means",
+    "text": "6.3 C-Means\n\n6.3.1 C-Means intégrant une dimension spatiale"
+  },
+  {
+    "objectID": "06-ClassificationsNonSupervisees.html#sec-063",
+    "href": "06-ClassificationsNonSupervisees.html#sec-063",
+    "title": "6  Classifications d’images non supervisées",
+    "section": "\n6.4 Quiz de révision du chapitre",
+    "text": "6.4 Quiz de révision du chapitre\n\n\n\n\n\nQuels problèmes posent l’utilisation des méthodes classiques d’analyse spatiale pour des données se produisant sur un réseau?\n\n\nRelisez au besoin la section 6.1.\n\n\n\n\n\n\nLa distance euclidienne tend à sous-estimer les distances réelles.\n\n\n\n\n\n\n\nLa distance euclidienne tend à surestimer les distances réelles.\n\n\n\n\n\n\n\nLe réseau est un espace comportant davantage de dimensions qu’un espace planaire.\n\n\n\n\n\n\n\nLe réseau est un espace ne respectant pas les hypothèses d’homogénéité et d’isotropie de l’espace planaire.\n\n\n\n\n\n\n\nLes méthodes classiques analysent des portions de l’espace en dehors du réseau.\n\n\n\n\n\n\n\n\n\n\nPour adapter la méthode classique du Kernel Density Estimate, il est nécessaire de :\n\n\nRelisez au besoin le début de la section 6.2.\n\n\n\n\n\n\nUtiliser une distance réseau plutôt qu’euclidienne.\n\n\n\n\n\n\n\nN’estimer les densités que le long des lixels représentant des fragments réguliers du réseau.\n\n\n\n\n\n\n\nAdapter la fonction de Kernel pour tenir compte de la division de la masse aux intersections.\n\n\n\n\n\n\n\nAppliquer une pénalité aux portions du réseau avec peu d’évènements.\n\n\n\n\n\n\n\n\n\n\nPour une NKDE, il est uniquement possible de calculer des densités selon une bandwidth fixe.\n\n\nRelisez au besoin la section 6.2.\n\n\n\n\n\n\nVrai\n\n\n\n\n\n\n\nFaux\n\n\n\n\n\n\n\n\n\n\nContrairement à la KDE classique, la NKDE est moins sensible au choix de la bandwidth.\n\n\nRelisez au besoin la section 6.3.\n\n\n\n\n\n\nVrai\n\n\n\n\n\n\n\nFaux\n\n\n\n\n\n\n\n\n\n\nL’extension spatio-temporelle du NKDE (TNKDE) consiste à :\n\n\nRelisez au besoin la section 6.3.\n\n\n\n\n\n\nCalculer une somme des densités spatiales et temporelles des évènements le long du réseau.\n\n\n\n\n\n\n\nCalculer le produit des densités spatiales et temporelles des évènements le long du réseau.\n\n\n\n\n\n\n\nCalculer l’intégrale des densités spatiales et temporelles des évènements le long du réseau.\n\n\n\n\n\n\n\n\n\n\nPour une TNKDE, il est uniquement possible de calculer des densités selon une bandwidth fixe.\n\n\nRelisez au besoin la section 6.3.\n\n\n\n\n\n\nVrai\n\n\n\n\n\n\n\nFaux\n\n\n\n\n\n\n\n\n\n\nLes méthodes KDE, NKDE, et TNKDE peuvent être vues comme :\n\n\nRelisez au besoin la section 6.2.\n\n\n\n\n\n\nDes méthodes descriptives visant à résumer un grand ensemble d’évènements en une carte de chaleur plus facilement interprétable.\n\n\n\n\n\n\n\nDes méthodes inférentielles permettant de déterminer statistiquement la présence de points chauds ou de points froids.\n\n\n\n\n\n\n\nDes algorithmes de type boite noire réduisant la dimensionnalité des données.\n\n\n\n\n\n\n\n\n\n\nL’utilisation d’une distance réseau plutôt qu’euclidienne pour un algorithme DBSCAN risque de :\n\n\nRelisez au besoin la section 6.5.\n\n\n\n\n\n\nAugmenter la taille des groupes détectés par l’algorithme, car la recherche de voisin sera plus facile sur le réseau\n\n\n\n\n\n\n\nRéduire la taille des groupes formés par l’algorithme, car la distance euclidienne tend à sous-estimer les distances réelles sur le réseau\n\n\n\n\n\n\n\n\n\nVérifier votre résultat"
+  },
+  {
+    "objectID": "06-ClassificationsNonSupervisees.html#sec-064",
+    "href": "06-ClassificationsNonSupervisees.html#sec-064",
+    "title": "6  Classifications d’images non supervisées",
+    "section": "\n6.5 Exercices de révision",
+    "text": "6.5 Exercices de révision\n\n\n\n\n\nExercice 1. À compléter\n\n\n\nlibrary(sf)\nlibrary(terra)\n# ...\n# à compléter\n\nCorrection à la section 8.5.1.\n\n\n\n\n\n\n\nExercice 2. À compléter\n\n\n\nlibrary(sf)\nlibrary(terra)\n# ...\n# à compléter\n\nCorrection à la section 8.5.2.\n\n\n\n\n\n\n\nExercice 3. À compléter\n\n\n\nlibrary(sf)\nlibrary(terra)\n# ...\n# à compléter\n\nCorrection à la section 8.5.3."
+  },
+  {
+    "objectID": "07-PlateformesMegadonnees.html#sec-071",
+    "href": "07-PlateformesMegadonnees.html#sec-071",
+    "title": "7  Introduction aux plateformes de mégadonnées",
+    "section": "\n7.1 Données massives",
+    "text": "7.1 Données massives"
+  },
+  {
+    "objectID": "07-PlateformesMegadonnees.html#sec-072",
+    "href": "07-PlateformesMegadonnees.html#sec-072",
+    "title": "7  Introduction aux plateformes de mégadonnées",
+    "section": "\n7.2 Manipulation de données satellitaires avec Google Earth Engine\n",
+    "text": "7.2 Manipulation de données satellitaires avec Google Earth Engine"
+  },
+  {
+    "objectID": "07-PlateformesMegadonnees.html#sec-073",
+    "href": "07-PlateformesMegadonnees.html#sec-073",
+    "title": "7  Introduction aux plateformes de mégadonnées",
+    "section": "\n7.3 Quiz de révision du chapitre",
+    "text": "7.3 Quiz de révision du chapitre\n\n\n\n\n\nQu’est-ce que la dépendance spatiale d’un modèle de régression?\n\n\nRelisez au besoin la section 7.1.\n\n\n\n\n\n\nLorsque les variables indépendantes sont fortement corrélées entre elles.\n\n\n\n\n\n\n\nLorsque les résidus du modèle sont fortement autocorrélés spatialement.\n\n\n\n\n\n\n\n\n\n\nDans un modèle SLX, l’autocorrélation est introduite au niveau de :\n\n\nRelisez au besoin la section 7.1.\n\n\n\n\n\n\nVariable dépendante\n\n\n\n\n\n\n\nVariables indépendantes\n\n\n\n\n\n\n\nTerme d’erreur\n\n\n\n\n\n\n\nVariable dépendante et variables indépendantes\n\n\n\n\n\n\n\nVariable dépendante et terme d’erreur\n\n\n\n\n\n\n\n\n\n\nDans un modèle SAR, l’autocorrélation est introduite au niveau de :\n\n\nRelisez au besoin la section 7.1.\n\n\n\n\n\n\nVariable dépendante\n\n\n\n\n\n\n\nVariables indépendantes\n\n\n\n\n\n\n\nTerme d’erreur\n\n\n\n\n\n\n\n\n\n\nDans un modèle SEM, l’autocorrélation est introduite au niveau de :\n\n\nRelisez au besoin la section 7.1.\n\n\n\n\n\n\nVariable dépendante\n\n\n\n\n\n\n\nVariables indépendantes\n\n\n\n\n\n\n\nTerme d’erreur\n\n\n\n\n\n\n\n\n\n\nDans un modèle mixte SDM, l’autocorrélation est introduite au niveau de :\n\n\nRelisez au besoin la section 7.2.\n\n\n\n\n\n\nVariable dépendante\n\n\n\n\n\n\n\nVariables indépendantes\n\n\n\n\n\n\n\nTerme d’erreur\n\n\n\n\n\n\n\n\n\n\nDans un modèle SDEM, l’autocorrélation est introduite au niveau de :\n\n\nRelisez au besoin la section 7.2.\n\n\n\n\n\n\nVariable dépendante\n\n\n\n\n\n\n\nVariables indépendantes\n\n\n\n\n\n\n\nTerme d’erreur\n\n\n\n\n\n\n\n\n\n\nComment est intégré l’espace dans un modèle généralisé additif?\n\n\nRelisez au besoin la section 7.2.\n\n\n\n\n\n\nAvec une variable spatialement décalée\n\n\n\n\n\n\n\nAvec une spline bivariée sur les coordonnées x et y\n\n\n\n\n\n\n\n\n\n\nUn modèle de régression géographiquement pondérée permet d’explorer\n\n\nRelisez le deuxième encadré à la section 7.1.\n\n\n\n\n\n\nL’instabilité spatiale du modèle\n\n\n\n\n\n\n\nLa dépendance du modèle\n\n\n\n\n\n\n\n\n\n\nUn modèle de régression géographiquement pondérée produit autant de régressions que d’entités spatiales dans le jeu de données à l’étude.\n\n\nRelisez le deuxième encadré à la section 7.1.\n\n\n\n\n\n\nVrai\n\n\n\n\n\n\n\nFaux\n\n\n\n\n\n\n\n\n\nVérifier votre résultat"
+  },
+  {
+    "objectID": "07-PlateformesMegadonnees.html#sec-074",
+    "href": "07-PlateformesMegadonnees.html#sec-074",
+    "title": "7  Introduction aux plateformes de mégadonnées",
+    "section": "\n7.4 Exercices de révision",
+    "text": "7.4 Exercices de révision\n\n\n\n\n\nExercice 1. À compléter\n\n\n\nlibrary(sf)\nlibrary(terra)\n# ...\n# à compléter\n\nCorrection à la section 8.7.1.\n\n\n\n\n\n\n\nExercice 2. À compléter\n\n\n\nlibrary(sf)\nlibrary(terra)\n# ...\n# à compléter\n\nCorrection à la section 8.7.2.\n\n\n\n\n\n\n\nExercice 3. À compléter\n\n\n\nlibrary(sf)\nlibrary(terra)\n# ...\n# à compléter\n\nCorrection à la section 8.7.3."
+  },
+  {
+    "objectID": "08-Exercices.html#sec-0801",
+    "href": "08-Exercices.html#sec-0801",
+    "title": "8  Correction des exercices",
+    "section": "\n8.1 Exercices du chapitre 1",
+    "text": "8.1 Exercices du chapitre 1\n\n8.1.1 Exercice 1\n\nlibrary(sf)\nlibrary(terra)\n\n\n8.1.2 Exercice 2\n\nlibrary(sf)\nlibrary(terra)\n\n\n8.1.3 Exercice 3\n\nlibrary(sf)\nlibrary(terra)"
+  },
+  {
+    "objectID": "08-Exercices.html#sec-0802",
+    "href": "08-Exercices.html#sec-0802",
+    "title": "8  Correction des exercices",
+    "section": "\n8.2 Exercices du chapitre 2",
+    "text": "8.2 Exercices du chapitre 2\n\n8.2.1 Exercice 1\n\n\nFigure 8.1: Exercice sur la contiguïté et les ordres d’adjacence\n\n\n8.2.2 Exercice 2\n\nlibrary(sf)\nlibrary(terra)\n\n\n8.2.3 Exercice 3\n\nlibrary(sf)\nlibrary(terra)\n\nLes valeurs du I de Moran sont les suivantes : 0,69 pour la matrice Rook, 0,52 pour la matrice inverse de la distance au carré réduite et 0,75 pour la matrice selon le critère des deux plus proches voisins."
+  },
+  {
+    "objectID": "08-Exercices.html#sec-0803",
+    "href": "08-Exercices.html#sec-0803",
+    "title": "8  Correction des exercices",
+    "section": "\n8.3 Exercices du chapitre 3",
+    "text": "8.3 Exercices du chapitre 3\n\n8.3.1 Exercice 1\n\nlibrary(sf)\nlibrary(terra)\n\n\n8.3.2 Exercice 2\n\nlibrary(sf)\nlibrary(terra)\n\n\n8.3.3 Exercice 3\n\nlibrary(sf)\nlibrary(terra)"
+  },
+  {
+    "objectID": "08-Exercices.html#sec-0804",
+    "href": "08-Exercices.html#sec-0804",
+    "title": "8  Correction des exercices",
+    "section": "\n8.4 Exercices du chapitre 4",
+    "text": "8.4 Exercices du chapitre 4\n\n8.4.1 Exercice 1\n\nlibrary(sf)\n\nLinking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.3.1; sf_use_s2() is TRUE\n\nlibrary(terra)\n\nterra 1.7.71\n\n\n\n8.4.2 Exercice 2\n\nlibrary(sf)\nlibrary(terra)\n\n\n8.4.3 Exercice 3\n\nlibrary(sf)\nlibrary(terra)"
+  },
+  {
+    "objectID": "08-Exercices.html#sec-0805",
+    "href": "08-Exercices.html#sec-0805",
+    "title": "8  Correction des exercices",
+    "section": "\n8.5 Exercices du chapitre 5",
+    "text": "8.5 Exercices du chapitre 5\n\n8.5.1 Exercice 1\n\nlibrary(sf)\nlibrary(terra)\n\n\n8.5.2 Exercice 2\n\n## Construction du réseau\nlibrary(sf)\nlibrary(terra)\n\n\n8.5.3 Exercice 3\n\nlibrary(sf)\nlibrary(terra)"
+  },
+  {
+    "objectID": "08-Exercices.html#sec-0806",
+    "href": "08-Exercices.html#sec-0806",
+    "title": "8  Correction des exercices",
+    "section": "\n8.6 Exercices du chapitre 6",
+    "text": "8.6 Exercices du chapitre 6\n\n8.6.1 Exercice 1\n\nlibrary(sf)\nlibrary(terra)\n\n\n8.6.2 Exercice 2\n\nlibrary(sf)\nlibrary(terra)\n\n\n8.6.3 Exercice 3\n\nlibrary(sf)\nlibrary(terra)"
+  },
+  {
+    "objectID": "08-Exercices.html#sec-0807",
+    "href": "08-Exercices.html#sec-0807",
+    "title": "8  Correction des exercices",
+    "section": "\n8.7 Exercices du chapitre 7",
+    "text": "8.7 Exercices du chapitre 7\n\n8.7.1 Exercice 1\n\nlibrary(sf)\nlibrary(terra)\n\n\n8.7.2 Exercice 2\n\nlibrary(sf)\nlibrary(terra)\n\n\n8.7.3 Exercice 3\n\nlibrary(sf)\nlibrary(terra)"
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "Bibliographie",
+    "section": "",
+    "text": "Bonn, Ferdinand et Guy Rochon. 1992. Précis de télédétection. Volume\n1 : principes et méthodes. Presses de l’université du Québec;\nAgence universitaire de la Francophonie.\n\n\nMather, Paul M et Magaly Koch. 2022. Computer processing of\nremotely-sensed images. John Wiley & Sons.\n\n\nRichards, John A, John A Richards et al. 2022. Remote sensing\ndigital image analysis. Vol. 5. Springer."
+  }
+]

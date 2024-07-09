@@ -1,0 +1,264 @@
+```{=tex}
+\renewcommand{\partname}{} % Réinitialiser partie
+```
+**Résumé :** Ce livre vise à décrire une panoplie de méthodes de traitement d’images satellites avec le logiciel ouvert R. Celles et ceux souhaitant migrer progressivement d’un autre logiciel d’imagerie et de télédétection vers R trouveront dans cet ouvrage les éléments pour une transition en douceur. La philosophie de ce livre est de donner toutes les clefs de compréhension et de mise en œuvre des méthodes abordées dans R. La présentation des méthodes est basée sur une approche compréhensive et intuitive plutôt que mathématique, sans pour autant négliger la rigueur mathématique ou statistique.
+
+**Remerciements :** Ce manuel a été réalisé avec le soutien de la fabriqueREL. Fondée en 2019, la fabriqueREL est portée par divers établissements d'enseignement supérieur du Québec et agit en collaboration avec les services de soutien pédagogique et les bibliothèques. Son but est de faire des ressources éducatives libres (REL) le matériel privilégié en enseignement supérieur au Québec.
+
+**Maquette de la page couverture et identité graphique du livre :** Andrés Henao Florez.
+
+**Mise en page :** Philippe Apparicio et Marie-Hélène Gadbois Del Carpio.
+
+**Révision linguistique :** Denise Latreille.
+
+© Philippe Apparicio, Yacine Bouroubi, Samuel Foucher et Mickël Foucher.
+
+**Pour citer cet ouvrage :** Apparicio P., Bouroubi, Y., Foucher, S. et M. Germain (2024). *Traitement d’images satellites : un grand bol d’R*. Université de Sherbrooke, Département de géomatique appliquée. fabriqueREL. Licence CC BY-SA. <br /> <br />
+
+![](images/introduction/CouvertureP2.png){width="80%" fig-align="left"}
+
+# Préface {.unnumbered}
+
+## Un manuel sous la forme d'une ressource éducative libre {#sect001 .unnumbered}
+
+**Pourquoi un manuel sous licence libre?**
+
+Les logiciels libres sont aujourd'hui très répandus. Comparativement aux logiciels propriétaires, l'accès au code source permet à quiconque de l'utiliser, de le modifier, de le dupliquer et de le partager. Le logiciel R, dans lequel sont mises en œuvre les méthodes de traitement d'images satellites décrites dans ce livre, est d'ailleurs à la fois un langage de programmation et un logiciel libre (sous la licence publique générale [GNU GPL2](https://fr.wikipedia.org/wiki/Licence_publique_g%C3%A9n%C3%A9rale_GNU)). Par analogie aux logiciels libres, il existe aussi des **ressources éducatives libres (REL)** « dont la licence accorde les permissions désignées par les 5R (**Retenir --- Réutiliser --- Réviser --- Remixer --- Redistribuer**) et donc permet nécessairement la modification » ([***fabriqueREL***](https://fabriquerel.org/rel/)). La licence de ce livre, CC BY-SA (@fig-Licence), permet donc de :
+
+-   **Retenir**, c'est-à-dire télécharger et imprimer gratuitement le livre. Notez qu'il aurait été plutôt surprenant d'écrire un livre payant sur un logiciel libre et donc gratuit. Aussi, nous aurions été très embarrassés que des personnes étudiantes avec des ressources financières limitées doivent payer pour avoir accès au livre, sans pour autant savoir préalablement si le contenu est réellement adapté à leurs besoins.
+
+-   **Réutiliser**, c'est-à-dire utiliser la totalité ou une section du livre sans limitation et sans compensation financière. Cela permet ainsi à d'autres personnes enseignantes de l'utiliser dans le cadre d'activités pédagogiques.
+
+-   **Réviser**, c'est-à-dire modifier, adapter et traduire le contenu en fonction d'un besoin pédagogique précis puisqu'aucun manuel n'est parfait, tant s'en faut! Le livre a d'ailleurs été écrit intégralement dans R avec [Quatro](https://quarto.org/). Quiconque peut ainsi télécharger gratuitement le code source du livre sur [github](https://github.com/SerieBoldR/MethodesAnalyseSpatiale) et le modifier à sa guise (voir l'encadré intitulé *Suggestions d'adaptation du manuel*).
+
+-   **Remixer**, c'est-à-dire « combiner la ressource avec d'autres ressources dont la licence le permet aussi pour créer une nouvelle ressource intégrée » ([***fabriqueREL***](https://fabriquerel.org/rel/)).
+
+-   **Redistribuer**, c'est-à-dire distribuer, en totalité ou en partie le manuel ou une version révisée sur d'autres canaux que le site Web du livre (par exemple, sur le site Moodle de votre université ou en faire une version imprimée).
+
+La licence de ce livre, CC BY-SA (@fig-Licence), oblige donc à :
+
+-   Attribuer la paternité de l'auteur dans vos versions dérivées, ainsi qu'une mention concernant les grandes modifications apportées, en utilisant la formulation suivante : 
+
+Apparicio Philippe, Yacine Bouroubi, Samuel Foucher et Mickaël Foucher (2024). *Traitement d’images satellites : un grand bol d’R*. Université de Sherbrooke, Département de géomatique appliquée. fabriqueREL. Licence CC BY-SA.
+
+-   Utiliser la même licence ou une licence similaire à toutes versions dérivées.
+
+![Licence Creative Commons du livre](images/introduction/Licence.JPG){#fig-Licence width="80%" fig-align="center"}
+
+
+::: bloc_astuce
+::: bloc_astuce-header
+::: bloc_astuce-icon
+:::
+
+**Suggestions d'adaptation du manuel**
+:::
+
+::: bloc_astuce-body
+Pour chaque méthode d'analyse spatiale abordée dans le livre, une description détaillée et une mise en œuvre dans R sont disponibles. Par conséquent, plusieurs adaptations du manuel sont possibles :
+
+-   Conserver uniquement les chapitres sur les méthodes ciblées dans votre cours.
+
+-   En faire une version imprimée et la distribuer aux personnes étudiantes.
+
+-   Modifier la description d'une ou de plusieurs méthodes en effectuant les mises à jour directement dans les chapitres.
+
+-   Insérer ses propres jeux de données dans les sections intitulées *Mise en œuvre dans R*.
+
+-   Modifier les tableaux et figures.
+
+-   Ajouter une série d'exercices.
+
+-   Modifier les quiz de révision.
+
+-   Rédiger un nouveau chapitre.
+
+-   Modifier des syntaxes R. Plusieurs *packages* R peuvent être utilisés pour mettre en œuvre telle ou telle méthode. Ces derniers évoluent aussi très vite et de nouveaux *packages* sont proposés fréquemment! Par conséquent, il peut être judicieux de modifier une syntaxe R du livre en fonction de ses habitudes de programmation dans R (utilisation d'autres *packages* que ceux utilisés dans le manuel par exemple) ou de bien mettre à jour une syntaxe à la suite de la parution d'un nouveau *package* plus performant ou intéressant.
+
+-   Toute autre adaptation qui permet de répondre au mieux à un besoin pédagogique.
+:::
+:::
+
+## Comment lire ce manuel? {#sect002 .unnumbered}
+
+Le livre comprend plusieurs types de blocs de texte qui en facilitent la lecture.
+
+::: bloc_package
+::: bloc_package-header
+::: bloc_package-icon
+:::
+
+**Bloc *packages***
+:::
+
+::: bloc_package-body
+Habituellement localisé au début d'un chapitre, il comprend la liste des *packages* R utilisés pour un chapitre.
+:::
+:::
+
+::: bloc_objectif
+::: bloc_objectif-header
+::: bloc_objectif-icon
+:::
+
+**Bloc objectif**
+:::
+
+::: bloc_objectif-body
+Il comprend une description des objectifs d'un chapitre ou d'une section.
+:::
+:::
+
+::: bloc_notes
+::: bloc_notes-header
+::: bloc_notes-icon
+:::
+
+**Bloc notes**
+:::
+
+::: bloc_notes-body
+Il comprend une information secondaire sur une notion, une idée abordée dans une section.
+:::
+:::
+
+::: bloc_aller_loin
+::: bloc_aller_loin-header
+::: bloc_aller_loin-icon
+:::
+
+**Bloc pour aller plus loin**
+:::
+
+::: bloc_aller_loin-body
+Il comprend des références ou des extensions d'une méthode abordée dans une section.
+:::
+:::
+
+::: bloc_astuce
+::: bloc_astuce-header
+::: bloc_astuce-icon
+:::
+
+**Bloc astuce**
+:::
+
+::: bloc_astuce-body
+Il décrit un élément qui vous facilitera la vie : une propriété statistique, un *package*, une fonction, une syntaxe R.
+:::
+:::
+
+::: bloc_attention
+::: bloc_attention-header
+::: bloc_attention-icon
+:::
+
+**Bloc attention**
+:::
+
+::: bloc_attention-body
+Il comprend une notion ou un élément important à bien maîtriser.
+:::
+:::
+
+::: bloc_exercice
+::: bloc_exercice-header
+::: bloc_exercice-icon
+:::
+
+**Bloc exercice**
+:::
+
+::: bloc_exercice-body
+Il comprend un court exercice de révision à la fin de chaque chapitre.
+:::
+:::
+
+## Comment utiliser les données du livre pour reproduire les exemples? {#sect003 .unnumbered}
+
+Ce livre comprend des exemples détaillés et appliqués dans R pour chacune des méthodes abordées. Ces exemples se basent sur des jeux de données structurés et mis à disposition avec le livre. Ils sont disponibles sur le *repo github* dans le sous-dossier `data`, à l'adresse <https://github.com/SerieBoldR/TraitementImagesVol1/tree/main/data>.
+
+Une autre option est de télécharger le *repo* complet du livre directement sur *github* (<https://github.com/SerieBoldR/TraitementImagesVol1>) en cliquant sur le bouton `Code`, puis le bouton `Download ZIP` (@fig-downloaffromgit). Les données se trouvent alors dans le sous-dossier nommé `data`.
+
+![Téléchargement de l'intégralité du livre](images/introduction/download_github.png){#fig-downloaffromgit width="40%" fig-align="center"}
+
+## Structure du livre {#sect004 .unnumbered}
+
+Le livre est organisé autour de quatre grandes parties.
+
+**Partie 1. Importation et manipulation de données spatiales.** Dans cette première partie, nous voyons comment importer, manipuler, cartographier et exporter des données spatiales dans R, principalement avec les *packages* `sf` pour les données vectorielles, `terra` pour les données matricielles (images) et `tmap` pour la cartographie ([chapitre @sec-chap01]). Maîtriser les notions abordées dans ce chapitre constitue une étape préalable et indispensable à tout projet d'analyse spatiale. D'une part, avant d'analyser des données spatiales, il convient de les structurer (importation et manipulation) et de les explorer (cartographie). D'autre part, une fois la ou les méthodes d'analyse spatiale mises en œuvre, il convient de cartographier les résultats finaux et de les exporter au besoin dans un format de données géographiques (shapefile (`shp`), GeoPackage (`GPKG`), GeoJSON (`geojson`), sqlite (`sqlite`), GeoTiff, etc.).
+
+**Partie 2. Transformations des données spatiales**. Cette troisième partie comprend deux chapitres : les transformations spectrales ([chapitre @sec-chap03]) et les transformations spatiales ([chapitre @sec-chap04]).
+
+**Partie 3. Classifications d'images.** Cette troisième partie comprend deux chapitres : les classifications supervisées ([chapitre @sec-chap05]) et non supervisées ([chapitre @sec-chap06]).
+
+**Partie 4. Données massives**. Cette quatrième et dernière partie comprend un seul chapitre qui est dédié aux plateformes de mégadonnes [chapitre @sec-chap07], notammment Google Earth Engine.
+
+## Remerciements {#sect005 .unnumbered}
+
+De nombreuses personnes ont contribué à l'élaboration de ce manuel.
+
+Ce projet a bénéficié du soutien pédagogique et financier de la [***fabriqueREL***](https://fabriquerel.org/) (ressources éducatives libres). Les différentes rencontres avec le comité de suivi nous ont permis de comprendre l'univers des ressources éducatives libres (REL) et notamment leurs [fameux 5R](https://fabriquerel.org/rel/) (Retenir --- Réutiliser --- Réviser --- Remixer --- Redistribuer), de mieux définir le besoin pédagogique visé par ce manuel, d'identifier des ressources pédagogiques et des outils pertinents pour son élaboration. Ainsi, nous remercions chaleureusement les membres de la *fabriqueREL* pour leur soutien inconditionnel :
+
+-   Myriam Beaudet, bibliothécaire à l'Université de Sherbrooke.
+
+-   Marianne Dubé, coordonnatrice de la fabriqueREL, Université de Sherbrooke.
+
+-   Serge Piché, conseiller pédagogique, Université de Sherbrooke.
+
+-   Claude Potvin, conseiller en formation, Service de soutien à l'enseignement, Université Laval.
+
+Nous remercions chaleureusement les personnes étudiantes des cours **à modifier plus tard** du [Baccalauréat en géomatique appliquée à l'environnement](https://www.usherbrooke.ca/admission/programme/271/baccalaureat-en-geomatiqueappliquee-a-lenvironnement/) et du [Microprogramme de 1er cycle en géomatique appliquée](https://www.usherbrooke.ca/admission/programme/429/microprogramme-de-1er-cycleen-geomatique-appliquee/) du [Département de géomatique appliquée](https://www.usherbrooke.ca/geomatique/) de l'[Université de Sherbrooke](https://www.usherbrooke.ca/) de la session d'été 2023 : à modifier plus tard.
+
+Nous remercions aussi les membres du comité de révision pour leurs commentaires et suggestions très constructifs. Ce comité est composé de quatre personnes étudiantes du [Département de géomatique appliquée](https://www.usherbrooke.ca/geomatique/) de l'[Université de Sherbrooke](https://www.usherbrooke.ca/) :
+
+-   À compléter plus tard.
+
+-   À compléter plus tard.
+
+Finalement, nous remercions Denise Latreille, réviseure linguistique et chargée de cours à l'Université Sherbrooke, pour la révision du manuel.
+
+
+## Introduction aux images de télédétection {#sect006 .unnumbered}
+
+-  Rappel sur les fondements
+
+-  Particularités des images en télédétection
+
+-  Ressources en ligne
+
+## *Packages* utilisés pour traiter des images {#sect007 .unnumbered}
+
+### Listes des *packages* utilisés {#sect0071 .unnumbered}
+
+Dans ce livre, nous utilisons de nombreux *packages* R que vous pouvez installer avec le code ci-dessous.
+
+```{r}
+#| echo: true
+#| eval: false
+#| message: false
+#| warning: false
+
+# Liste des packages
+ListePackages <- c("dplyr", "factoextra", "RColorBrewer",
+                   "sf", "terra", "tmap")
+# Packages non installés dans la liste
+PackagesNonInstalles <- ListePackages[!(ListePackages %in% installed.packages()[,"Package"])]
+# Installation des packages manquants
+if(length(new.packages)) install.packages(PackagesNonInstalles)
+```
+
+### Philosophie et packages dans R pour l’analyse d’images {#sect0072 .unnumbered}
+
+### R 101 {#sect0073 .unnumbered}
+
+
+```{r}
+#| echo: false
+#| eval: true
+#| message: false
+#| warning: false
+
+# Chargement des fonctions supplémentaires
+source("code_complementaire/QuizzFunctions.R")
+```

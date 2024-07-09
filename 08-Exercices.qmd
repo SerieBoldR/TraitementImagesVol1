@@ -1,0 +1,221 @@
+# Correction des exercices {#sec-chap10}
+
+## Exercices du chapitre 1 {#sec-0801}
+
+### Exercice 1 {#sec-08011}
+
+```{r}
+#| echo: true 
+#| message: false 
+#| eval: false
+library(sf)
+library(terra)
+```
+
+### Exercice 2 {#sec-08012}
+
+```{r}
+#| echo: true 
+#| message: false
+#| eval: false
+library(sf)
+library(terra)
+```
+
+### Exercice 3 {#sec-08013}
+
+```{r}
+#| echo: true 
+#| message: false
+#| eval: false
+library(sf)
+library(terra)
+```
+
+## Exercices du chapitre 2 {#sec-0802}
+
+### Exercice 1 {#sec-08021}
+
+![Exercice sur la contiguïté et les ordres d'adjacence](images/Chap10/ExoMatriceDeContiguiteCorrection.png){#fig-ExoMatriceDeContiguite width="65%" fig-align="center"}
+
+### Exercice 2 {#sec-08022}
+
+```{r}
+#| echo: true 
+#| message: false
+#| eval: false
+library(sf)
+library(terra)
+```
+
+### Exercice 3 {#sec-08023}
+
+```{r}
+#| echo: true 
+#| message: false
+#| eval: false
+library(sf)
+library(terra)
+```
+
+Les valeurs du *I* de Moran sont les suivantes : 0,69 pour la matrice *Rook*, 0,52 pour la matrice inverse de la distance au carré réduite et 0,75 pour la matrice selon le critère des deux plus proches voisins.
+
+## Exercices du chapitre 3 {#sec-0803}
+
+### Exercice 1 {#sec-08031}
+
+```{r}
+#| echo: true 
+#| message: false
+#| eval: false
+library(sf)
+library(terra)
+```
+
+### Exercice 2 {#sec-08032}
+
+```{r}
+#| echo: true 
+#| message: false
+#| eval: false
+library(sf)
+library(terra)
+```
+
+### Exercice 3 {#sec-08033}
+
+```{r}
+#| echo: true 
+#| message: false
+#| eval: false
+library(sf)
+library(terra)
+```
+
+## Exercices du chapitre 4 {#sec-0804}
+
+### Exercice 1 {#sec-08041}
+
+```{r}
+library(sf)
+library(terra)
+```
+
+### Exercice 2 {#sec-08042}
+
+```{r}
+#| echo: true 
+#| message: false
+#| eval: false
+library(sf)
+library(terra)
+```
+
+### Exercice 3 {#sec-08043}
+
+```{r}
+#| echo: true 
+#| message: false
+#| eval: false
+library(sf)
+library(terra)
+```
+
+## Exercices du chapitre 5 {#sec-0805}
+
+### Exercice 1 {#sec-08051}
+
+```{r}
+#| echo: true 
+#| message: false
+#| eval: false
+library(sf)
+library(terra)
+```
+
+### Exercice 2 {#sec-08052}
+
+```{r}
+#| echo: true 
+#| message: false
+#| eval: false
+## Construction du réseau
+library(sf)
+library(terra)
+```
+
+### Exercice 3 {#sec-08053}
+
+```{r}
+#| echo: true 
+#| message: false
+#| eval: false
+library(sf)
+library(terra)
+```
+
+## Exercices du chapitre 6 {#sec-0806}
+
+### Exercice 1 {#sec-08061}
+```{r}
+#| echo: true 
+#| message: false
+#| eval: false
+library(sf)
+library(terra)
+```
+
+
+### Exercice 2 {#sec-08062}
+
+```{r}
+#| echo: true 
+#| message: false
+#| eval: false
+library(sf)
+library(terra)
+```
+
+
+### Exercice 3 {#sec-08063}
+
+```{r}
+#| echo: true 
+#| message: false
+#| eval: false
+library(sf)
+library(terra)
+```
+
+
+## Exercices du chapitre 7 {#sec-0807}
+
+### Exercice 1 {#sec-08071}
+
+```{r}
+#| echo: true 
+#| message: false
+#| eval: false
+library(sf)
+library(terra)
+```
+
+### Exercice 2 {#sec-08072}
+
+```{r}
+#| echo: true 
+#| message: false
+#| eval: false
+library(sf)
+library(terra)
+```
+
+### Exercice 3 {#sec-08073}
+
+```{r}
+#| echo: true 
+#| message: false
+#| eval: false
+library(sf)
+library(terra)
+```
