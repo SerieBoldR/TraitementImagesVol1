@@ -24,6 +24,10 @@ Dans le chapitre, nous abordons les méthodes...
 
 ## Filtrage d'image {#sec-042}
 
+Filtre médian, filtre moyen
+
+Filtre de Sobel, filtre Prewitt
+
 ## Segmentation {#sec-043}
 
 ## Vectorisation et rasterisation {#sec-044}
